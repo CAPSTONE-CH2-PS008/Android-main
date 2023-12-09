@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.AtomicHabits" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.AtomicHabits" parent="Theme.Material3.DayNight">
         <!-- Primary brand color. -->
         <item name="android:colorBackground">@color/dark_purple</item>
         <item name="android:textColor">@color/white</item>
@@ -18,7 +18,8 @@
     <style name="AppTheme.ActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:gravity">center</item> <!-- Set gravity to center -->
+        <item name="android:gravity">center</item>
     </style>
 
+    <style name="Theme.AtomicHabits" parent="Base.Theme.AtomicHabits" />
 </resources>
