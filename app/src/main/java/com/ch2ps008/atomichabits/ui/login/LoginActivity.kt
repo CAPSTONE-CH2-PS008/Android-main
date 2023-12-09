@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
             btnLogin.setOnClickListener {
                 val loginIntent = Intent(this@LoginActivity, MainActivity::class.java)
                 startActivity(loginIntent)
+                finish()
             }
             tvRegister.setOnClickListener {
                 val registerIntent = Intent(this@LoginActivity, RegisterActivity::class.java)

@@ -1,6 +1,9 @@
 package com.ch2ps008.atomichabits.ui.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -9,6 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.ActivityMainBinding
+import com.ch2ps008.atomichabits.ui.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,5 +36,23 @@ class MainActivity : AppCompatActivity() {
 //        )
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_logout -> {
+                val logoutIntent = Intent(this, LoginActivity::class.java)
+                startActivity(logoutIntent)
+                finish()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
