@@ -35,4 +35,7 @@
     <string name="already_have_an_account">Already Have an Account?</string>
     <string name="dont_have_account">Dont Have Account?</string>
     <string name="logout">Logout</string>
+    <string name="your_activity">Your Activity</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
 </resources>
