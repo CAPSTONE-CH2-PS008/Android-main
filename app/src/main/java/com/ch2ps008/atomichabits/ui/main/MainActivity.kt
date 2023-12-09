@@ -14,6 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.ActivityMainBinding
 import com.ch2ps008.atomichabits.ui.login.LoginActivity
+import com.ch2ps008.atomichabits.ui.profile.ProfileActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-        supportActionBar?.setCustomView(R.layout.customactionbar    )
+        supportActionBar?.setCustomView(R.layout.customactionbar)
 
         val navView: BottomNavigationView = binding.navView
 
@@ -49,10 +50,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.menu_logout -> {
-                val logoutIntent = Intent(this, LoginActivity::class.java)
-                startActivity(logoutIntent)
-                finish()
+            R.id.menu_profile -> {
+                val profileIntent = Intent(this, ProfileActivity::class.java)
+                startActivity(profileIntent)
                 true
             }
 

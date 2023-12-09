@@ -38,4 +38,5 @@
     <string name="your_activity">Your Activity</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
+    <string name="profile">Profile</string>
 </resources>

@@ -16,6 +16,8 @@ class RegisterActivity : AppCompatActivity() {
         _binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         binding.apply {
             btnRegister.setOnClickListener {
                 val registerIntent = Intent(this@RegisterActivity, LoginActivity::class.java)
