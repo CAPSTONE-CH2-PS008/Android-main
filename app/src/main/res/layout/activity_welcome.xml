@@ -10,10 +10,10 @@
         android:id="@+id/viewFlipper"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:autoStart="true"
+        android:autoStart="false"
         android:inAnimation="@anim/slide_in_custom"
         android:outAnimation="@anim/slide_out_custom"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -43,15 +43,67 @@
             android:src="@drawable/carousel4" />
     </ViewFlipper>
 
+    <ViewFlipper
+        android:id="@+id/textViewFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:autoStart="false"
+        android:inAnimation="@anim/slide_in_custom"
+        android:outAnimation="@anim/slide_out_custom"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcome">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_regular"
+            android:text="Welcome to the Atomic Habits app, your personal catalyst for transformative change. "
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_regular"
+            android:text="Unlock the power of atomic habits – small changes that lead to big outcomes. Whether you're aiming for personal growth, fitness, career success, or overall well-being, this app is your secret weapon."
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_regular"
+            android:text="Your habits, your way. Access your progress on-the-go, keeping your goals in sight wherever life takes you. Seamless synchronization across devices ensures you're always in control."
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_regular"
+            android:text="Your data is yours alone. We prioritize your privacy and security, ensuring a safe space for your personal development."
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </ViewFlipper>
 
     <TextView
         android:id="@+id/tvWelcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sarala_regular"
         android:text="@string/welcome_to_atomic_habits"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="32sp"
+        android:textSize="24sp"
+        android:textStyle="bold"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +117,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/login"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewFlipper" />
 
     <Button
         android:id="@+id/btnRegister"
@@ -75,6 +127,6 @@
         android:layout_marginEnd="32dp"
         android:text="@string/register"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewFlipper" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
