@@ -6,6 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".ui.register.RegisterActivity">
 
+    <ViewFlipper
+        android:id="@+id/viewFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:autoStart="true"
+        android:inAnimation="@anim/slide_in_custom"
+        android:outAnimation="@anim/slide_out_custom"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/carousel3" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/carousel1" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/carousel4" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/carousel2" />
+    </ViewFlipper>
+
+
     <TextView
         android:id="@+id/tvRegister"
         android:layout_width="wrap_content"
@@ -13,10 +51,9 @@
         android:text="@string/register"
         android:textColor="@color/white"
         android:textSize="32sp"
-        android:layout_marginTop="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/viewFlipper" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ed_nameLayout"
