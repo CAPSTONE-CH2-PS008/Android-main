@@ -1,11 +1,8 @@
 package com.ch2ps008.atomichabits.ui.profile
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
-import com.ch2ps008.atomichabits.R
-import com.ch2ps008.atomichabits.databinding.ActivityLoginBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.ch2ps008.atomichabits.databinding.ActivityProfileBinding
 import com.ch2ps008.atomichabits.ui.login.LoginActivity
 

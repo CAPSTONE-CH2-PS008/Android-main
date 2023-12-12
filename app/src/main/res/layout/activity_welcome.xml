@@ -48,7 +48,7 @@
         android:id="@+id/tvWelcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to Atomic Habits"
+        android:text="@string/welcome_to_atomic_habits"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="32sp"

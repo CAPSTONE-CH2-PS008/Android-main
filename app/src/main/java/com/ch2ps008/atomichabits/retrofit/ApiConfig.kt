@@ -1,7 +1,6 @@
 package com.ch2ps008.atomichabits.retrofit
 
 import com.google.firebase.BuildConfig
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

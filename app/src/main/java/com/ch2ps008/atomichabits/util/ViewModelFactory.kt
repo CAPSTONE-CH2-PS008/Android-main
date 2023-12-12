@@ -1,7 +1,6 @@
 package com.ch2ps008.atomichabits.util
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ch2ps008.atomichabits.injection.Injection

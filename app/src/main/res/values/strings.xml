@@ -45,4 +45,5 @@
     <string name="lanjut">Next</string>
     <string name="error">Error</string>
     <string name="ok">OK</string>
+    <string name="welcome_to_atomic_habits">Welcome to Atomic Habits</string>
 </resources>
