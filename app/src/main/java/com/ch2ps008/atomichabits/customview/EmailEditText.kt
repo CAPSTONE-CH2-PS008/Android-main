@@ -9,6 +9,7 @@ import android.util.Patterns
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 import com.ch2ps008.atomichabits.R
+import com.google.android.material.textfield.TextInputLayout
 
 class EmailEditText : AppCompatEditText {
     constructor(context: Context) : super(context) {
@@ -32,15 +33,16 @@ class EmailEditText : AppCompatEditText {
             }
 
             override fun onTextChanged(character: CharSequence, start: Int, before: Int, count: Int) {
+                val emailLayout = textInputLayout()
                 when {
                     character.toString().isEmpty() -> {
-                        setError(context.getString(R.string.email_empty), null)
+                        emailLayout?.error =(context.getString(R.string.email_empty))
                     }
                     !Patterns.EMAIL_ADDRESS.matcher(character.toString()).matches() -> {
-                        setError(context.getString(R.string.wrong_email_format), null)
+                        emailLayout?.error =(context.getString(R.string.wrong_email_format))
                     }
                     else -> {
-                        error = null
+                        emailLayout?.error = null
                     }
                 }
             }
@@ -48,5 +50,16 @@ class EmailEditText : AppCompatEditText {
             override fun afterTextChanged(s: Editable?) {
             }
         })
+    }
+
+    private fun textInputLayout(): TextInputLayout? {
+        var parent = parent
+        while (parent != null) {
+            if (parent is TextInputLayout) {
+                return parent
+            }
+            parent = parent.parent
+        }
+        return null
     }
 }

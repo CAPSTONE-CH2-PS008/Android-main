@@ -12,6 +12,7 @@ import com.ch2ps008.atomichabits.ui.main.MainActivity
 import com.ch2ps008.atomichabits.ui.register.RegisterActivity
 import com.ch2ps008.atomichabits.util.ViewModelFactory
 import com.ch2ps008.atomichabits.response.Result
+
 class LoginActivity : AppCompatActivity() {
 
     private var _binding: ActivityLoginBinding? = null
@@ -28,22 +29,16 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.apply {
-//            btnLogin.setOnClickListener {
-//                val loginIntent = Intent(this@LoginActivity, MainActivity::class.java)
-//                startActivity(loginIntent)
-//                finish()
-//            }
             tvRegister.setOnClickListener {
                 val registerIntent = Intent(this@LoginActivity, RegisterActivity::class.java)
                 startActivity(registerIntent)
             }
-        }
+            btnLogin.setOnClickListener {
+                val email = binding.edEmail.text.toString()
+                val password = binding.edPassword.text.toString()
 
-        binding.btnLogin.setOnClickListener {
-            val email = binding.edEmail.text.toString()
-            val password = binding.edPassword.text.toString()
-
-            loginUser(email, password)
+                loginUser(email, password)
+            }
         }
     }
 
@@ -51,20 +46,17 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.loginUser(email, password).observe(this) { result ->
             when (result) {
                 is Result.Loading -> {
-                    binding.progressIndicator.visibility = View.VISIBLE
+                    showLoading(true)
                 }
 
                 is Result.Success -> {
-                    binding.progressIndicator.visibility = View.GONE
+                    showLoading(false)
                     AlertDialog.Builder(this).apply {
                         setTitle(getString(R.string.sukses_login))
                         setMessage(getString(R.string.login_berhasil))
                         setPositiveButton(getString(R.string.lanjut)) { _, _ ->
                             val intent =
-                                Intent(this@LoginActivity, MainActivity::class.java).apply {
-                                    flags =
-                                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                }
+                                Intent(this@LoginActivity, MainActivity::class.java)
                             startActivity(intent)
                         }
                         show()
@@ -72,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 is Result.Error -> {
-                    binding.progressIndicator.visibility = View.GONE
+                    showLoading(false)
                     AlertDialog.Builder(this).apply {
                         setTitle(getString(R.string.error))
                         setMessage(result.error)
@@ -81,6 +73,16 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }.create().show()
                 }
+            }
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.apply {
+            if (isLoading) {
+                progressIndicator.visibility = View.VISIBLE
+            } else {
+                progressIndicator.visibility = View.GONE
             }
         }
     }
