@@ -101,7 +101,7 @@
         android:fontFamily="@font/sarala_regular"
         android:text="@string/welcome_to_atomic_habits"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/light_purple"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginTop="32dp"

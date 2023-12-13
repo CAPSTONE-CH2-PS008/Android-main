@@ -23,10 +23,12 @@ class WelcomeActivity : AppCompatActivity() {
             btnLogin.setOnClickListener {
                 val loginIntent = Intent(this@WelcomeActivity, LoginActivity::class.java)
                 startActivity(loginIntent)
+                finish()
             }
             btnRegister.setOnClickListener {
                 val registerIntent = Intent(this@WelcomeActivity, RegisterActivity::class.java)
                 startActivity(registerIntent)
+                finish()
             }
             textViewFlipper.setOnClickListener{
                 textViewFlipper.showNext()

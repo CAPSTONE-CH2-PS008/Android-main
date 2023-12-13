@@ -22,10 +22,12 @@ class RegisterActivity : AppCompatActivity() {
             btnRegister.setOnClickListener {
                 val registerIntent = Intent(this@RegisterActivity, LoginActivity::class.java)
                 startActivity(registerIntent)
+                finish()
             }
             tvSignIn.setOnClickListener {
                 val loginIntent = Intent(this@RegisterActivity, LoginActivity::class.java)
                 startActivity(loginIntent)
+                finish()
             }
         }
     }

@@ -37,45 +37,49 @@ class LoginActivity : AppCompatActivity() {
                 val email = binding.edEmail.text.toString()
                 val password = binding.edPassword.text.toString()
 
-                loginUser(email, password)
+//                loginUser(email, password)
+
+                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
     }
 
-    private fun loginUser(email: String, password: String) {
-        loginViewModel.loginUser(email, password).observe(this) { result ->
-            when (result) {
-                is Result.Loading -> {
-                    showLoading(true)
-                }
-
-                is Result.Success -> {
-                    showLoading(false)
-                    AlertDialog.Builder(this).apply {
-                        setTitle(getString(R.string.sukses_login))
-                        setMessage(getString(R.string.login_berhasil))
-                        setPositiveButton(getString(R.string.lanjut)) { _, _ ->
-                            val intent =
-                                Intent(this@LoginActivity, MainActivity::class.java)
-                            startActivity(intent)
-                        }
-                        show()
-                    }
-                }
-
-                is Result.Error -> {
-                    showLoading(false)
-                    AlertDialog.Builder(this).apply {
-                        setTitle(getString(R.string.error))
-                        setMessage(result.error)
-                        setPositiveButton(getString(R.string.ok)) { it, _ ->
-                            it.dismiss()
-                        }
-                    }.create().show()
-                }
-            }
-        }
-    }
+//    private fun loginUser(email: String, password: String) {
+//        loginViewModel.loginUser(email, password).observe(this) { result ->
+//            when (result) {
+//                is Result.Loading -> {
+//                    showLoading(true)
+//                }
+//
+//                is Result.Success -> {
+//                    showLoading(false)
+//                    AlertDialog.Builder(this).apply {
+//                        setTitle(getString(R.string.sukses_login))
+//                        setMessage(getString(R.string.login_berhasil))
+//                        setPositiveButton(getString(R.string.lanjut)) { _, _ ->
+//                            val intent =
+//                                Intent(this@LoginActivity, MainActivity::class.java)
+//                            startActivity(intent)
+//                        }
+//                        show()
+//                    }
+//                }
+//
+//                is Result.Error -> {
+//                    showLoading(false)
+//                    AlertDialog.Builder(this).apply {
+//                        setTitle(getString(R.string.error))
+//                        setMessage(result.error)
+//                        setPositiveButton(getString(R.string.ok)) { it, _ ->
+//                            it.dismiss()
+//                        }
+//                    }.create().show()
+//                }
+//            }
+//        }
+//    }
 
     private fun showLoading(isLoading: Boolean) {
         binding.apply {
