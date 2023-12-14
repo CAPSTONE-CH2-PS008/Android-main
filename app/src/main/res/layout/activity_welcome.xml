@@ -10,7 +10,7 @@
         android:id="@+id/viewFlipper"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:autoStart="false"
+        android:autoStart="true"
         android:inAnimation="@anim/slide_in_custom"
         android:outAnimation="@anim/slide_out_custom"
         android:layout_marginTop="100dp"

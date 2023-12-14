@@ -32,6 +32,8 @@ class WelcomeActivity : AppCompatActivity() {
             }
             textViewFlipper.setOnClickListener{
                 textViewFlipper.showNext()
+            }
+            viewFlipper.setOnClickListener{
                 viewFlipper.showNext()
             }
         }

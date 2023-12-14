@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.add.AddActivity">
+
+        <TextView
+            android:id="@+id/tvAddActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/add_activity"
+            android:textColor="@color/light_purple"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvInputActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/input_your_activity"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddActivity" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ed_activityNameLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/activity_name"
+            android:textColorHint="@color/white"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvInputActivity">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edActivityName"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/ed_activityNameLayout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ed_startHourLayout"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/start_hour"
+            android:textColorHint="@color/white"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_activityNameLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edStartHour"
+                android:textColor="@color/white"
+                android:inputType="number"
+                android:maxLength="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ed_EndHourLayout"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/end_hour"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp"
+            android:textColorHint="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/ed_startHourLayout"
+            app:layout_constraintTop_toBottomOf="@+id/ed_activityNameLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edEndHour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="2"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

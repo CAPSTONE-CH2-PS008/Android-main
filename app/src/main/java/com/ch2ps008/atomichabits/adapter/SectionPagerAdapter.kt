@@ -18,6 +18,6 @@ class SectionsPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(ac
     }
 
     override fun getItemCount(): Int {
-        return 3
+        return 2
     }
 }

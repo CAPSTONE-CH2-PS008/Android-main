@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_list"
-        android:name="com.ch2ps008.atomichabits.ui.dashboard.ListFragment"
+        android:name="com.ch2ps008.atomichabits.ui.list.ListFragment"
         android:label="List"
         tools:layout="@layout/fragment_list" />
 
     <fragment
         android:id="@+id/navigation_tipsandtrick"
-        android:name="com.ch2ps008.atomichabits.ui.notifications.TipsAndTrickFragment"
+        android:name="com.ch2ps008.atomichabits.ui.tipsandtrick.TipsAndTrickFragment"
         android:label="Tips And Trick"
         tools:layout="@layout/fragment_tipsandtrick" />
 </navigation>

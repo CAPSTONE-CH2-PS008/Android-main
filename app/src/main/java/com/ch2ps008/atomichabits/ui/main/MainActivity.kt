@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.ActivityMainBinding
+import com.ch2ps008.atomichabits.ui.add.AddActivity
 import com.ch2ps008.atomichabits.ui.profile.ProfileActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -50,6 +51,11 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_profile -> {
                 val profileIntent = Intent(this, ProfileActivity::class.java)
                 startActivity(profileIntent)
+                true
+            }
+            R.id.menu_add -> {
+                val addIntent = Intent(this, AddActivity::class.java)
+                startActivity(addIntent)
                 true
             }
 
