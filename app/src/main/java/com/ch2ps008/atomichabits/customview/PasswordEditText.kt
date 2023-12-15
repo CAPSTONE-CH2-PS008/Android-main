@@ -35,7 +35,7 @@ class PasswordEditText : AppCompatEditText {
                     character.toString().isEmpty() -> {
                         passwordLayout?.error = context.getString(R.string.password_empty)
                     }
-                    character.toString().length < 8 -> {
+                    character.toString().length < 6 -> {
                         passwordLayout?.error = context.getString(R.string.password_less)
                     }
                     else -> {
