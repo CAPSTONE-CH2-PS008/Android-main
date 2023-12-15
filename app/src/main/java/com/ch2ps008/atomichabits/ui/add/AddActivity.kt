@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputFilter
 import android.text.Spanned
+import android.widget.TextView
+import androidx.appcompat.app.ActionBar
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.ActivityAddBinding
 import com.ch2ps008.atomichabits.databinding.ActivityRegisterBinding
@@ -16,6 +18,8 @@ class AddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        updateCustomActionBarTitle(getString(R.string.add_activity))
 
         binding.apply {
             edStartHour.filters = arrayOf(MinMaxEditTextInputFilter(0, 23))
@@ -52,5 +56,15 @@ class AddActivity : AppCompatActivity() {
                 value in max..min
             }
         }
+    }
+
+    private fun updateCustomActionBarTitle(title: String) {
+        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar?.setCustomView(R.layout.customactionbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val customActionBarView = supportActionBar?.customView
+        val titleTextView = customActionBarView?.findViewById<TextView>(R.id.tvTitle)
+        titleTextView?.text = title
     }
 }

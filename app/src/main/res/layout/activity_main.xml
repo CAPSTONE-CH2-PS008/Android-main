@@ -15,6 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:itemTextColor="@color/white"
         app:itemIconTint="@color/white"
+        app:itemActiveIndicatorStyle="@drawable/homenavbar"
         app:menu="@menu/bottom_nav_menu" />
 
     <fragment

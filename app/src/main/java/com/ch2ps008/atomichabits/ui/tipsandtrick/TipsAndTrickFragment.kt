@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.FragmentTipsandtrickBinding
+import com.ch2ps008.atomichabits.ui.main.MainActivity
 
 class TipsAndTrickFragment : Fragment() {
 
@@ -22,6 +23,12 @@ class TipsAndTrickFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.fragment_tipsandtrick, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        (requireActivity() as MainActivity).updateCustomActionBarTitle(getString(R.string.tips_and_trick))
     }
 
     override fun onDestroyView() {

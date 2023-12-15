@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.FragmentHomeBinding
+import com.ch2ps008.atomichabits.ui.main.MainActivity
 
 class HomeFragment : Fragment() {
 
@@ -22,6 +23,12 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.fragment_home, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        (requireActivity() as MainActivity).updateCustomActionBarTitle(getString(R.string.title_home))
     }
 
     override fun onDestroyView() {

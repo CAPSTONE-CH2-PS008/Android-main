@@ -51,4 +51,6 @@
     <string name="activity_name">Activity Name</string>
     <string name="add_activity">Add Activity</string>
     <string name="input_your_activity">Input Your Activity</string>
+    <string name="list_activity">List Activity</string>
+    <string name="tips_and_trick">Tips and Trick</string>
 </resources>

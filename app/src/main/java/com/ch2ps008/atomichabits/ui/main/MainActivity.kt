@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -23,9 +24,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-        supportActionBar?.setCustomView(R.layout.customactionbar)
 
         val navView: BottomNavigationView = binding.navView
 
@@ -61,5 +59,14 @@ class MainActivity : AppCompatActivity() {
 
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    fun updateCustomActionBarTitle(title: String) {
+        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar?.setCustomView(R.layout.customactionbar)
+
+        val customActionBarView = supportActionBar?.customView
+        val titleTextView = customActionBarView?.findViewById<TextView>(R.id.tvTitle)
+        titleTextView?.text = title
     }
 }

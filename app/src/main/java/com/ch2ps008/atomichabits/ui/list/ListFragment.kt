@@ -10,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.adapter.SectionsPagerAdapter
 import com.ch2ps008.atomichabits.databinding.FragmentListBinding
+import com.ch2ps008.atomichabits.ui.main.MainActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -32,6 +33,8 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (requireActivity() as MainActivity).updateCustomActionBarTitle(getString(R.string.list_activity))
+
         val sectionsPagerAdapter = SectionsPagerAdapter(requireActivity())
         val viewPager: ViewPager2 = view.findViewById(R.id.view_pager)
         viewPager.adapter = sectionsPagerAdapter
@@ -45,6 +48,7 @@ class ListFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 
     companion object {
         @StringRes

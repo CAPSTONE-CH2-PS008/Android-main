@@ -28,8 +28,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_add_24dp" />
-                            <entry key="sourceFile" value="C:\Users\andri\AndroidStudioProjects\AtomicHabitsfix" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_newspaper_filled" />
+                            <entry key="sourceFile" value="C:\Users\andri\Downloads\newspaper (1).svg" />
                           </map>
                         </option>
                       </PersistentState>
