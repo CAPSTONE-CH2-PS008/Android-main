@@ -1,6 +1,6 @@
 package com.ch2ps008.atomichabits.retrofit
 
-import com.google.firebase.BuildConfig
+import com.ch2ps008.atomichabits.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
     companion object {
-        var BASE_URL = "API_KEY"
+        private val BASE_URL = BuildConfig.BASE_URL
         fun getApiService(): ApiService {
             val loggingInterceptor =
                 if (BuildConfig.DEBUG) {

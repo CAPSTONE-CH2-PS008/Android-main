@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatEditText
 import com.ch2ps008.atomichabits.R
 import com.google.android.material.textfield.TextInputLayout
@@ -34,12 +35,15 @@ class PasswordEditText : AppCompatEditText {
                 when {
                     character.toString().isEmpty() -> {
                         passwordLayout?.error = context.getString(R.string.password_empty)
+                        layoutReset(true)
                     }
                     character.toString().length < 6 -> {
                         passwordLayout?.error = context.getString(R.string.password_less)
+                        layoutReset(true)
                     }
                     else -> {
                         passwordLayout?.error = null
+                        layoutReset(false)
                     }
                 }
             }
@@ -57,5 +61,19 @@ class PasswordEditText : AppCompatEditText {
             parent = parent.parent
         }
         return null
+    }
+
+    private fun layoutReset(isError: Boolean) {
+        val passwordLayout = textInputLayout()
+        if (isError) {
+            passwordLayout?.isErrorEnabled = true
+            passwordLayout?.error = context.getString(R.string.wrong_email_format)
+            val layoutParams = passwordLayout?.layoutParams
+            layoutParams?.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            passwordLayout?.requestLayout()
+        } else {
+            passwordLayout?.isErrorEnabled = false
+            passwordLayout?.error = null
+        }
     }
 }

@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Patterns
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatEditText
 import com.ch2ps008.atomichabits.R
 import com.google.android.material.textfield.TextInputLayout
@@ -35,14 +36,13 @@ class EmailEditText : AppCompatEditText {
             override fun onTextChanged(character: CharSequence, start: Int, before: Int, count: Int) {
                 val emailLayout = textInputLayout()
                 when {
-                    character.toString().isEmpty() -> {
-                        emailLayout?.error =(context.getString(R.string.email_empty))
-                    }
-                    !Patterns.EMAIL_ADDRESS.matcher(character.toString()).matches() -> {
-                        emailLayout?.error =(context.getString(R.string.wrong_email_format))
+                    character.toString().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(character.toString()).matches() -> {
+                        emailLayout?.error = context.getString(R.string.wrong_email_format)
+                        layoutReset(true)
                     }
                     else -> {
                         emailLayout?.error = null
+                        layoutReset(false)
                     }
                 }
             }
@@ -61,5 +61,19 @@ class EmailEditText : AppCompatEditText {
             parent = parent.parent
         }
         return null
+    }
+
+    private fun layoutReset(isError: Boolean) {
+        val emailLayout = textInputLayout()
+        if (isError) {
+            emailLayout?.isErrorEnabled = true
+            emailLayout?.error = context.getString(R.string.wrong_email_format)
+            val layoutParams = emailLayout?.layoutParams
+            layoutParams?.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            emailLayout?.requestLayout()
+        } else {
+            emailLayout?.isErrorEnabled = false
+            emailLayout?.error = null
+        }
     }
 }
