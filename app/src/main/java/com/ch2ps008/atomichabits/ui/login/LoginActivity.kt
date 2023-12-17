@@ -3,15 +3,18 @@ package com.ch2ps008.atomichabits.ui.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.ActivityLoginBinding
+import com.ch2ps008.atomichabits.response.Body
 import com.ch2ps008.atomichabits.ui.main.MainActivity
 import com.ch2ps008.atomichabits.ui.register.RegisterActivity
 import com.ch2ps008.atomichabits.util.ViewModelFactory
 import com.ch2ps008.atomichabits.response.Result
+import com.ch2ps008.atomichabits.auth.UserModel
 
 class LoginActivity : AppCompatActivity() {
 
@@ -66,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
                         }
                         show()
                     }
+                    saveSession(result.data.body)
                 }
 
                 is Result.Error -> {
@@ -80,6 +84,11 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun saveSession(uid: Body) {
+        loginViewModel.saveSession(UserModel(uid.uid))
+        Log.d("Token disimpan", uid.uid)
     }
 
     private fun showLoading(isLoading: Boolean) {

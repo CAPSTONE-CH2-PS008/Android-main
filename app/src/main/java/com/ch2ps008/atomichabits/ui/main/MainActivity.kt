@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -13,11 +14,16 @@ import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.ActivityMainBinding
 import com.ch2ps008.atomichabits.ui.add.AddActivity
 import com.ch2ps008.atomichabits.ui.profile.ProfileActivity
+import com.ch2ps008.atomichabits.ui.welcome.WelcomeActivity
+import com.ch2ps008.atomichabits.util.ViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val mainViewModel by viewModels<MainViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +43,13 @@ class MainActivity : AppCompatActivity() {
 //        )
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        mainViewModel.getSession().observe(this) { user ->
+            if (!user.isLogin) {
+                startActivity(Intent(this, WelcomeActivity::class.java))
+                finish()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -49,11 +62,13 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_profile -> {
                 val profileIntent = Intent(this, ProfileActivity::class.java)
                 startActivity(profileIntent)
+                finish()
                 true
             }
             R.id.menu_add -> {
                 val addIntent = Intent(this, AddActivity::class.java)
                 startActivity(addIntent)
+                finish()
                 true
             }
 

@@ -11,8 +11,13 @@ import retrofit2.HttpException
 import com.ch2ps008.atomichabits.response.Result
 import com.ch2ps008.atomichabits.data.LoginRequest
 import com.ch2ps008.atomichabits.data.RegisterRequest
+import com.ch2ps008.atomichabits.response.RegisterResponse
+import com.ch2ps008.atomichabits.auth.UserModel
+import com.ch2ps008.atomichabits.auth.UserPreference
+import kotlinx.coroutines.flow.Flow
 
 class UserRepository private constructor(
+    private val userPreference: UserPreference,
     private val apiService: ApiService
 ){
 
@@ -33,7 +38,7 @@ class UserRepository private constructor(
             }
         }
 
-    fun register(name: String, email: String, password: String): LiveData<Result<LoginResponse>> =
+    fun register(name: String, email: String, password: String): LiveData<Result<RegisterResponse>> =
         liveData {
             emit(Result.Loading)
             try {
@@ -50,11 +55,24 @@ class UserRepository private constructor(
             }
         }
 
+    suspend fun logout() {
+        userPreference.logout()
+    }
+
+    suspend fun saveSession(user: UserModel) {
+        userPreference.saveSession(user)
+    }
+
+    fun getSession(): Flow<UserModel> {
+        return userPreference.getSession()
+    }
+
     companion object {
         private const val TAG = "UserRepository"
 
         fun getInstance(
-            apiService: ApiService
-        ): UserRepository = UserRepository(apiService)
+            apiService: ApiService,
+            userPreference: UserPreference,
+        ): UserRepository = UserRepository(userPreference, apiService)
     }
 }
