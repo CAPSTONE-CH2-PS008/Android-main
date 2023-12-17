@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputFilter
 import android.text.Spanned
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import com.ch2ps008.atomichabits.R
@@ -20,6 +23,8 @@ class AddActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         updateCustomActionBarTitle(getString(R.string.add_activity))
+
+        dropdownDay()
 
         binding.apply {
             edStartHour.filters = arrayOf(MinMaxEditTextInputFilter(0, 23))
@@ -54,6 +59,39 @@ class AddActivity : AppCompatActivity() {
                 value in min..max
             } else {
                 value in max..min
+            }
+        }
+    }
+
+    private fun dropdownDay() {
+        val spinnerDay: Spinner = findViewById(R.id.spinnerDay)
+
+        // Data untuk dropdown
+        val days = arrayOf("Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu")
+        val dayValues = arrayOf(1, 2, 3, 4, 5, 6, 7)
+
+        // Buat adapter untuk spinner
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, days)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // Set adapter untuk spinner
+        spinnerDay.adapter = adapter
+
+        // Set listener jika Anda ingin menanggapi pemilihan item pada spinner
+
+        spinnerDay.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parentView: AdapterView<*>,
+                selectedItemView: android.view.View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedDayValue = dayValues[position]
+                // Do something with the selected day value (1-7)
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>) {
+                // Do something when nothing is selected
             }
         }
     }
