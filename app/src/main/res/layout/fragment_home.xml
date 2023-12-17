@@ -11,17 +11,29 @@
         android:layout_height="wrap_content"
         tools:context=".ui.home.HomeFragment">
 
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:textSize="18sp"
+            android:text="@string/your_nearest_activity"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/cardview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/cardview_home"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
             android:layout_marginTop="16dp"
+            android:src="@drawable/cardview_home"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5"/>
 
         <TextView
             android:id="@+id/tvNearestActivity"
@@ -81,6 +93,18 @@
             app:layout_constraintStart_toStartOf="@+id/activityLogo"
             app:layout_constraintTop_toBottomOf="@+id/activityLogo" />
 
+        <TextView
+            android:id="@+id/tvYourActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Status"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardview" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvActivity"
             android:layout_width="0dp"
@@ -92,7 +116,7 @@
             android:layout_marginEnd="16dp"
             android:paddingBottom="16dp"
             tools:listitem="@layout/habit_cardview"
-            app:layout_constraintTop_toBottomOf="@+id/cardview"
+            app:layout_constraintTop_toBottomOf="@+id/tvYourActivity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintWidth_default="spread" />
