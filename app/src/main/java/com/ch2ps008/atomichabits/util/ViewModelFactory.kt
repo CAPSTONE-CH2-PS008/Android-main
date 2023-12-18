@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ch2ps008.atomichabits.injection.Injection
 import com.ch2ps008.atomichabits.repository.UserRepository
+import com.ch2ps008.atomichabits.ui.add.AddViewModel
 import com.ch2ps008.atomichabits.ui.login.LoginViewModel
 import com.ch2ps008.atomichabits.ui.main.MainViewModel
 import com.ch2ps008.atomichabits.ui.profile.ProfileViewModel
@@ -30,6 +31,9 @@ class ViewModelFactory private constructor(
         }
         else if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
             return ProfileViewModel(userRepository) as T
+        }
+        else if (modelClass.isAssignableFrom(AddViewModel::class.java)) {
+            return AddViewModel(userRepository) as T
         }
         throw IllegalArgumentException("No ModelClass: " + modelClass.name)
     }

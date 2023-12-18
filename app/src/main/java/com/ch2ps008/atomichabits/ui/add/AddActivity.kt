@@ -9,15 +9,22 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.ActivityAddBinding
 import com.ch2ps008.atomichabits.databinding.ActivityRegisterBinding
+import com.ch2ps008.atomichabits.ui.profile.ProfileViewModel
+import com.ch2ps008.atomichabits.util.ViewModelFactory
 
 class AddActivity : AppCompatActivity() {
 
     private var _binding: ActivityAddBinding? = null
     private val binding get() = _binding!!
+
+    private val addViewModel by viewModels<AddViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityAddBinding.inflate(layoutInflater)
@@ -31,6 +38,18 @@ class AddActivity : AppCompatActivity() {
         binding.apply {
             edStartHour.filters = arrayOf(MinMaxEditTextInputFilter(0, 23))
             edEndHour.filters = arrayOf(MinMaxEditTextInputFilter(0,23))
+            btnSubmit.setOnClickListener {
+                binding.apply {
+                    val activityName = edActivityName.text.toString()
+                    val activityCategory = spinnerActivity.selectedItemPosition
+                    val startHour = edStartHour.text.toString().toInt()
+                    val endHour = edEndHour.text.toString().toInt()
+                    val interest = spinnerInterest.selectedItemPosition
+
+                    addViewModel.addHabit(activityName, activityCategory, startHour, endHour, interest)
+                    finish()
+                }
+            }
         }
 }
 

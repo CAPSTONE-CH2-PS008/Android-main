@@ -64,18 +64,19 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ed_startHourLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/ed_activityNameLayout" />
 
         <Spinner
             android:id="@+id/spinnerActivity"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvActivityCategory"/>
+            app:layout_constraintTop_toBottomOf="@+id/tvActivityCategory" />
 
         <TextView
             android:id="@+id/tvCategory"
@@ -85,7 +86,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerActivity" />
+            app:layout_constraintTop_toBottomOf="@+id/ed_startHourLayout" />
 
         <Spinner
             android:id="@+id/spinnerInterest"
@@ -108,7 +109,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ed_activityNameLayout">
+            app:layout_constraintTop_toBottomOf="@+id/spinnerActivity">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edStartHour"
@@ -128,7 +129,7 @@
             android:layout_marginStart="32dp"
             android:textColorHint="@color/white"
             app:layout_constraintStart_toEndOf="@+id/ed_startHourLayout"
-            app:layout_constraintTop_toBottomOf="@+id/ed_activityNameLayout">
+            app:layout_constraintTop_toBottomOf="@+id/spinnerActivity">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edEndHour"
@@ -138,6 +139,18 @@
                 android:maxLength="2"
                 android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="Submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerInterest" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

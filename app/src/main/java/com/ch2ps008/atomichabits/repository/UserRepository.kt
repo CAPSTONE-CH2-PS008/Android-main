@@ -14,6 +14,8 @@ import com.ch2ps008.atomichabits.data.RegisterRequest
 import com.ch2ps008.atomichabits.response.RegisterResponse
 import com.ch2ps008.atomichabits.auth.UserModel
 import com.ch2ps008.atomichabits.auth.UserPreference
+import com.ch2ps008.atomichabits.db.Habit
+import com.ch2ps008.atomichabits.db.HabitDao
 import com.ch2ps008.atomichabits.source.TipsAndTrick
 import com.ch2ps008.atomichabits.source.TipsAndTrickData
 import kotlinx.coroutines.flow.Flow
@@ -21,8 +23,9 @@ import kotlinx.coroutines.flow.flow
 
 class UserRepository private constructor(
     private val userPreference: UserPreference,
-    private val apiService: ApiService
-){
+    private val apiService: ApiService,
+    private val habitDao: HabitDao
+) {
 
     fun login(email: String, password: String): LiveData<Result<LoginResponse>> =
         liveData {
@@ -41,7 +44,11 @@ class UserRepository private constructor(
             }
         }
 
-    fun register(name: String, email: String, password: String): LiveData<Result<RegisterResponse>> =
+    fun register(
+        name: String,
+        email: String,
+        password: String
+    ): LiveData<Result<RegisterResponse>> =
         liveData {
             emit(Result.Loading)
             try {
@@ -70,10 +77,29 @@ class UserRepository private constructor(
         return userPreference.getSession()
     }
 
-
     fun getTips(): Flow<List<TipsAndTrick>> = flow {
-        // Use the tips data from the TipsData file
         emit(TipsAndTrickData.tips)
+    }
+
+    fun getHabitId(habitId: Int): LiveData<Habit> {
+        return habitDao.getHabitById(habitId)
+    }
+
+    suspend fun insertHabit(
+        activityName: String,
+        spinnerActivity: Int,
+        startHour: Int,
+        endHour: Int,
+        spinnerInterest: Int
+    ) {
+        val newHabit = Habit(
+            activityName = activityName,
+            activityCategory = spinnerActivity,
+            startHour = startHour,
+            endHour = endHour,
+            interest = spinnerInterest
+        )
+        habitDao.insertHabit(newHabit)
     }
 
     companion object {
@@ -82,6 +108,7 @@ class UserRepository private constructor(
         fun getInstance(
             apiService: ApiService,
             userPreference: UserPreference,
-        ): UserRepository = UserRepository(userPreference, apiService)
+            habitDao: HabitDao
+        ): UserRepository = UserRepository(userPreference, apiService, habitDao )
     }
 }
