@@ -14,7 +14,10 @@ import com.ch2ps008.atomichabits.data.RegisterRequest
 import com.ch2ps008.atomichabits.response.RegisterResponse
 import com.ch2ps008.atomichabits.auth.UserModel
 import com.ch2ps008.atomichabits.auth.UserPreference
+import com.ch2ps008.atomichabits.source.TipsAndTrick
+import com.ch2ps008.atomichabits.source.TipsAndTrickData
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 class UserRepository private constructor(
     private val userPreference: UserPreference,
@@ -65,6 +68,12 @@ class UserRepository private constructor(
 
     fun getSession(): Flow<UserModel> {
         return userPreference.getSession()
+    }
+
+
+    fun getTips(): Flow<List<TipsAndTrick>> = flow {
+        // Use the tips data from the TipsData file
+        emit(TipsAndTrickData.tips)
     }
 
     companion object {

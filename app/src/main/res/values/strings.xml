@@ -60,4 +60,28 @@
     <string name="confirmation">Confirmation</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="tips_and_trick_image">Tips And Trick Image</string>
+
+    <string-array name="days_array">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+    <string-array name="activity_array">
+        <item>Low Priority</item>
+        <item>Middle Priority</item>
+        <item>High Priority</item>
+        <item>Workout</item>
+    </string-array>
+
+    <string-array name="interest_array">
+        <item>Not Interested</item>
+        <item>Neutral</item>
+        <item>Interested</item>
+    </string-array>
 </resources>

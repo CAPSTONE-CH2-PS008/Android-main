@@ -62,13 +62,11 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_profile -> {
                 val profileIntent = Intent(this, ProfileActivity::class.java)
                 startActivity(profileIntent)
-                finish()
                 true
             }
             R.id.menu_add -> {
                 val addIntent = Intent(this, AddActivity::class.java)
                 startActivity(addIntent)
-                finish()
                 true
             }
 

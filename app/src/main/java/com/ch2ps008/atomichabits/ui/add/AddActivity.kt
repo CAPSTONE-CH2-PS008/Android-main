@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputFilter
 import android.text.Spanned
+import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -24,7 +25,8 @@ class AddActivity : AppCompatActivity() {
 
         updateCustomActionBarTitle(getString(R.string.add_activity))
 
-        dropdownDay()
+        dropdownActivity()
+        dropdownInterest()
 
         binding.apply {
             edStartHour.filters = arrayOf(MinMaxEditTextInputFilter(0, 23))
@@ -63,23 +65,18 @@ class AddActivity : AppCompatActivity() {
         }
     }
 
-    private fun dropdownDay() {
-        val spinnerDay: Spinner = findViewById(R.id.spinnerDay)
+    private fun dropdownActivity() {
+        val spinnerActivity = binding.spinnerActivity
 
-        // Data untuk dropdown
-        val days = arrayOf("Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu")
-        val dayValues = arrayOf(1, 2, 3, 4, 5, 6, 7)
+        val days = resources.getStringArray(R.array.activity_array)
+        val dayValues = arrayOf(1, 2, 3, 4)
 
-        // Buat adapter untuk spinner
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, days)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        // Set adapter untuk spinner
-        spinnerDay.adapter = adapter
+        spinnerActivity.adapter = adapter
 
-        // Set listener jika Anda ingin menanggapi pemilihan item pada spinner
-
-        spinnerDay.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        spinnerActivity.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parentView: AdapterView<*>,
                 selectedItemView: android.view.View?,
@@ -87,11 +84,37 @@ class AddActivity : AppCompatActivity() {
                 id: Long
             ) {
                 val selectedDayValue = dayValues[position]
-                // Do something with the selected day value (1-7)
+                Log.d("priority", selectedDayValue.toString())
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {
-                // Do something when nothing is selected
+            }
+        }
+    }
+
+    private fun dropdownInterest() {
+        val spinnerInterest = binding.spinnerInterest
+
+        val days = resources.getStringArray(R.array.interest_array)
+        val dayValues = arrayOf(0,1,2)
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, days)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        spinnerInterest.adapter = adapter
+
+        spinnerInterest.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parentView: AdapterView<*>,
+                selectedItemView: android.view.View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedDayValue = dayValues[position]
+                Log.d("interest", selectedDayValue.toString())
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>) {
             }
         }
     }

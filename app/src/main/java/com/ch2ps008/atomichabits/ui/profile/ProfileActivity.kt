@@ -40,7 +40,6 @@ class ProfileActivity : AppCompatActivity() {
         binding.apply {
             btnLogout.setOnClickListener {
                 profileViewModel.logout()
-                finish()
             }
         }
     }
