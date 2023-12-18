@@ -81,9 +81,7 @@ class UserRepository private constructor(
         emit(TipsAndTrickData.tips)
     }
 
-    fun getHabitId(habitId: Int): LiveData<Habit> {
-        return habitDao.getHabitById(habitId)
-    }
+    fun getHabitId(): LiveData<List<Habit>> = habitDao.getHabit()
 
     suspend fun insertHabit(
         activityName: String,
@@ -100,6 +98,10 @@ class UserRepository private constructor(
             interest = spinnerInterest
         )
         habitDao.insertHabit(newHabit)
+    }
+
+    suspend fun deleteDB() {
+        habitDao.deleteDB()
     }
 
     companion object {

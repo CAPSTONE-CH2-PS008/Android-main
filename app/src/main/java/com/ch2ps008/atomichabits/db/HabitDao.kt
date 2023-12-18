@@ -11,12 +11,15 @@ import androidx.room.Query
 
 @Dao
 interface HabitDao {
-    @RawQuery(observedEntities = [Habit::class])
-    fun getHabit(query: SupportSQLiteQuery): DataSource.Factory<Int, Habit>
+    @Query("SELECT * FROM habits")
+    fun getHabit(): LiveData<List<Habit>>
 
     @Query("SELECT * FROM habits WHERE id = :habitId")
     fun getHabitById(habitId: Int): LiveData<Habit>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertHabit(habit: Habit)
+
+    @Query("DELETE FROM habits")
+    suspend fun deleteDB()
 }

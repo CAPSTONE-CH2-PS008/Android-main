@@ -76,6 +76,8 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
 
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+
     implementation("androidx.room:room-paging:2.6.1")
     implementation ("androidx.room:room-ktx:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")

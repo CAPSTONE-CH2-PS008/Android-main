@@ -12,7 +12,6 @@ class SectionsPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(ac
         when (position) {
             0 -> fragment = HabitFragment()
             1 -> fragment = HabitFragment()
-            2 -> fragment = HabitFragment()
         }
         return fragment as Fragment
     }
