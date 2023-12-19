@@ -4,30 +4,61 @@ object TipsAndTrickData{
     val tips = listOf(
         TipsAndTrick(
             id = 1,
-            photoUrl = "https://ilmu.lpkn.id/wp-content/uploads/2021/02/Best-Habit-Tracking-Apps-for-iPhone-and-iPad.jpg",
-            title = "8 Tips to help you form new habits and stick to them",
-            description = "What Are Habits?\n" +
-                    "Let’s define habits. Habits are the small decisions you make and actions you perform every day. According to researchers at Duke University, habits account for about 40 percent of our behaviors on any given day. \n" +
-                    "\n" +
-                    "Your life today is essentially the sum of your habits. How in shape or out of shape you are? A result of your habits. How happy or unhappy you are? A result of your habits. How successful or unsuccessful you are? A result of your habits.\n" +
-                    "\n" +
-                    "What you repeatedly do (i.e. what you spend time thinking about and doing each day) ultimately forms the person you are, the things you believe, and the personality that you portray. Everything I write about – from procrastination and productivity to strength and nutrition – starts with better habits. When you learn to transform your habits, you can transform your life.\n" +
-                    "\n" +
-                    "This page includes recommended resources on forming better habits and breaking bad ones in any area of life, but if you’d like to explore information on specific types of habits, check out these articles:\n" +
-                    "\n" +
-                    "Healthy Eating: The Beginner’s Guide on How to Eat Healthy and Stick to It\n" +
-                    "Procrastination: A Scientific Guide on How to Stop Procrastinating\n" +
-                    "Focus: The Ultimate Guide on How to Improve Focus and Concentration",
-            source = "https://media.cnn.com/api/v1/images/stellar/prod/211124144641-5-steps-habit-builder-wellness-112421.jpg?q=x_4,y_88,h_2246,w_3991,c_crop/h_653,w_1160/f_webp"
+            photoUrl = "https://www.meaningfulhq.com/images/the-power-of-habit.jpg",
+            title = "The Science of Habits",
+            description = "How did you end up with so many habits if they are so hard to create? \n" +
+                    "If you understand the science around how habits are formed,\n" +
+                    "you will see that there are some fairly simple things you can do that make habits very easy to form and even relatively easy to change.\n" +
+                    "For most people most of the time, habits are created unconsciously, and they are carried out automatically.\n" +
+                    "Habits help us all to do the many hundreds of things we need and want to do in our lives. Because we can carry out a habit without having to think about it,\n" +
+                    "it frees up our thought processes to work on other things. It’s a clever trick that our brains have evolved to make us more efficient.",
+            source = "https://www.psychologytoday.com/us/blog/brain-wise/201904/the-science-habits"
         ),
         TipsAndTrick(
             id = 2,
-            photoUrl = "https://1.bp.blogspot.com/-RYDAqNoezFo/XtQQRnPH5tI/AAAAAAAAAZQ/5ptrzjP0NQ0_iMG7jmSTL_6QQAYLTq95gCK4BGAsYHg/w640-h360/How%2Bto%2Bform%2BHabit.jpg",
-            title = "Three Ways to Form Better Habits",
-            description = "How to Build a New Habit: This is Your Strategy Guide: Read this guide right now to learn 5 easy, powerful strategies for changing habits.\n" +
-                    "How To Start New Habits That Actually Stick: This helpful framework can make it easier to stick to new habits so that you can improve your health, your work, and your life in general.\n" +
-                    "Identity-Based Habits: How to Actually Stick to Your Goals This Year: Most of the time we set our goals in the wrong way. Read this article to learn how identity-based habits can help you achieve your goals more easily.",
-            source = "https://media.cnn.com/api/v1/images/stellar/prod/211124144641-5-steps-habit-builder-wellness-112421.jpg?q=x_4,y_88,h_2246,w_3991,c_crop/h_653,w_1160/f_webp"
+            photoUrl = "https://hbr.org/resources/images/article_assets/2021/02/Feb21_02_1285466367.jpg",
+            title = "What Does It Really Take to Build a New Habit?",
+            description = "Our habits govern our lives, literally. Research shows that around half of our daily actions are driven by repetition. \n" +
+                    "This is probably why behavioral scientists and psychologists have spent so much time writing about how to establish and keep positive habits.\n" +
+                    "Regular sleep and exercise, a healthy diet, an organized schedule, and mindfulness are just a few examples of practices that — if done regularly — can improve our work, relationships, and mental health.",
+            source = "https://hbr.org/2021\n" +
+                    "/02/what-does-it-really-take-to-build-a-new-habit"
+        ),
+        TipsAndTrick(
+            id = 3,
+            photoUrl = "https://www.scotthyoung.com/blog/wp-content/uploads/2019/05/habits-logo-1-e1565170795325.png",
+            title = "Habitual Mastery",
+            description = "In the article below, we’ll start on our path to mastering our habits. First we need to really recognize what a habit actually is.\n" +
+                    "From there we need to develop the ability to become aware of these habits and our ability to seek improvements in them.",
+            source = "https://www.scotthyoung.com/blog/2006/\n" +
+                    "05/09/introduction-habitual-mastery-series/"
+        ),
+        TipsAndTrick(
+            id = 4,
+            photoUrl = "https://www.scotthyoung.com/blog/wp-content/uploads/2019/05/habits-logo-1-e1565170795325.png",
+            title = "Habitual Mastery",
+            description = "In the article below, we’ll start on our path to mastering our habits. First we need to really recognize what a habit actually is.\n" +
+                    "From there we need to develop the ability to become aware of these habits and our ability to seek improvements in them.",
+            source = "https://www.scotthyoung.com/blog/2006/\n" +
+                    "05/09/introduction-habitual-mastery-series/"
+        ),
+        TipsAndTrick(
+            id = 5,
+            photoUrl = "https://www.scotthyoung.com/blog/wp-content/uploads/2019/05/habits-logo-1-e1565170795325.png",
+            title = "Habitual Mastery",
+            description = "In the article below, we’ll start on our path to mastering our habits. First we need to really recognize what a habit actually is.\n" +
+                    "From there we need to develop the ability to become aware of these habits and our ability to seek improvements in them.",
+            source = "https://www.scotthyoung.com/blog/2006/\n" +
+                    "05/09/introduction-habitual-mastery-series/"
+        ),
+        TipsAndTrick(
+            id = 6,
+            photoUrl = "https://www.scotthyoung.com/blog/wp-content/uploads/2019/05/habits-logo-1-e1565170795325.png",
+            title = "Habitual Mastery",
+            description = "In the article below, we’ll start on our path to mastering our habits. First we need to really recognize what a habit actually is.\n" +
+                    "From there we need to develop the ability to become aware of these habits and our ability to seek improvements in them.",
+            source = "https://www.scotthyoung.com/blog/2006/\n" +
+                    "05/09/introduction-habitual-mastery-series/"
         )
     )
 }

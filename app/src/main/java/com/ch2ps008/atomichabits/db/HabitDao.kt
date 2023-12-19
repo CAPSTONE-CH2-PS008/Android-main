@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.RawQuery
 import androidx.sqlite.db.SupportSQLiteQuery
 import androidx.paging.DataSource
+import androidx.room.Delete
 import androidx.room.Query
 
 @Dao
@@ -22,4 +23,7 @@ interface HabitDao {
 
     @Query("DELETE FROM habits")
     suspend fun deleteDB()
+
+    @Delete
+    suspend fun deleteHabit(habit: Habit)
 }

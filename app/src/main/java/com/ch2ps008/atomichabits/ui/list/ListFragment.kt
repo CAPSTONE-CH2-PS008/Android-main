@@ -8,7 +8,9 @@ import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.adapter.HabitAdapter
@@ -34,6 +36,8 @@ class ListFragment : Fragment() {
         ViewModelFactory.getInstance(requireActivity())
     }
 
+    private lateinit var recycler: RecyclerView
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,18 +61,20 @@ class ListFragment : Fragment() {
         }.attach()
 
 
-        adapter = HabitAdapter{
+        adapter = HabitAdapter {
 
         }
-
         binding.rvHabit.adapter = adapter
-        val layoutManager = LinearLayoutManager(requireActivity())
-        binding.rvHabit.layoutManager = layoutManager
 
+        val layoutManager = LinearLayoutManager(requireActivity())
+        recycler = binding.rvHabit
+        recycler.layoutManager = layoutManager
+
+        initAction()
         setupAction()
     }
 
-    private fun setupAction(){
+    private fun setupAction() {
         mainViewModel.getHabit().observe(viewLifecycleOwner) { habits ->
             adapter.submitList(habits)
         }
@@ -79,6 +85,30 @@ class ListFragment : Fragment() {
         _binding = null
     }
 
+    private fun initAction() {
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
+            override fun getMovementFlags(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder
+            ): Int {
+                return makeMovementFlags(0, ItemTouchHelper.RIGHT)
+            }
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val habit = (viewHolder as HabitAdapter.ViewHolder).getHabit
+                mainViewModel.deleteTask(habit)
+            }
+        })
+        itemTouchHelper.attachToRecyclerView(recycler)
+    }
 
     companion object {
         @StringRes

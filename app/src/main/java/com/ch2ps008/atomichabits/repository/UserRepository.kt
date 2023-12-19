@@ -104,6 +104,10 @@ class UserRepository private constructor(
         habitDao.deleteDB()
     }
 
+    suspend fun deleteHabit(habit: Habit) {
+        habitDao.deleteHabit(habit)
+    }
+
     companion object {
         private const val TAG = "UserRepository"
 

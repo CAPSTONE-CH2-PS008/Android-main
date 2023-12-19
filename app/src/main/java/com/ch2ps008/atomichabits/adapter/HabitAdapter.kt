@@ -51,7 +51,10 @@ class HabitAdapter(private val onItemClick: (Habit) -> Unit) :
     class ViewHolder(private val binding: HabitItemBinding, private val onItemClick: (Habit) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
 
+        lateinit var getHabit: Habit
+
         fun bind(habit: Habit) {
+            getHabit = habit
             binding.apply {
                 tvYourActivity.text = habit.activityName
                 val startTime = formatHour(habit.startHour)
@@ -59,21 +62,6 @@ class HabitAdapter(private val onItemClick: (Habit) -> Unit) :
                 tvTime.text = String.format("%s-%s", startTime, endTime)
 
                 itemView.setOnClickListener { onItemClick(habit) }
-            }
-        }
-    }
-
-    companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Habit>() {
-            override fun areItemsTheSame(oldItem: Habit, newItem: Habit): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(
-                oldItem: Habit,
-                newItem: Habit
-            ): Boolean {
-                return oldItem == newItem
             }
         }
     }
