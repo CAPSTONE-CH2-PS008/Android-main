@@ -12,6 +12,7 @@ import com.ch2ps008.atomichabits.ui.login.LoginViewModel
 import com.ch2ps008.atomichabits.ui.main.MainViewModel
 import com.ch2ps008.atomichabits.ui.profile.ProfileViewModel
 import com.ch2ps008.atomichabits.ui.register.RegisterViewModel
+import com.ch2ps008.atomichabits.ui.tipsandtrick.TipsAndTrickViewModel
 import com.ch2ps008.atomichabits.ui.welcome.WelcomeViewModel
 
 class ViewModelFactory private constructor(
@@ -42,6 +43,9 @@ class ViewModelFactory private constructor(
         }
         else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             return HomeViewModel(userRepository) as T
+        }
+        else if (modelClass.isAssignableFrom(TipsAndTrickViewModel::class.java)) {
+            return TipsAndTrickViewModel(userRepository) as T
         }
         throw IllegalArgumentException("No ModelClass: " + modelClass.name)
     }

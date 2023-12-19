@@ -4,23 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.adapter.TipsAndTrickAdapter
 import com.ch2ps008.atomichabits.databinding.FragmentTipsandtrickBinding
 import com.ch2ps008.atomichabits.source.TipsAndTrickData
 import com.ch2ps008.atomichabits.ui.main.MainActivity
+import com.ch2ps008.atomichabits.ui.register.RegisterViewModel
+import com.ch2ps008.atomichabits.util.ViewModelFactory
+import java.util.ArrayList
 
 class TipsAndTrickFragment : Fragment() {
 
     private var _binding: FragmentTipsandtrickBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
-    private lateinit var tipsAdapter: TipsAndTrickAdapter
+    private val tipsAndTrickViewModel by viewModels<TipsAndTrickViewModel> {
+        ViewModelFactory.getInstance(requireActivity())
+    }
+
+    private val tipsAdapter by lazy { TipsAndTrickAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,10 +41,13 @@ class TipsAndTrickFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentTipsandtrickBinding.bind(view)
 
-        // Initialize the RecyclerView and Adapter
-        tipsAdapter = TipsAndTrickAdapter(TipsAndTrickData.tips) // Replace TipsData.tips with your actual data
-        binding.rvTips.layoutManager = LinearLayoutManager(requireContext())
         binding.rvTips.adapter = tipsAdapter
+        val layoutManager = LinearLayoutManager(requireContext())
+        binding.rvTips.layoutManager = layoutManager
+
+        tipsAndTrickViewModel.getTips().observe(viewLifecycleOwner) { tips ->
+            tipsAdapter.updateData(tips)
+        }
 
         (requireActivity() as MainActivity).updateCustomActionBarTitle(getString(R.string.tips_and_trick))
     }

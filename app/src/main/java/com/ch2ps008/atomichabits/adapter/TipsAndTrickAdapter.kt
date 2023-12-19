@@ -13,8 +13,10 @@ import com.ch2ps008.atomichabits.databinding.TipsItemBinding
 import com.ch2ps008.atomichabits.source.TipsAndTrick
 import com.ch2ps008.atomichabits.ui.tipsandtrick.DetailTipsActivity
 
-class TipsAndTrickAdapter(private val tipsList: List<TipsAndTrick>) :
+class TipsAndTrickAdapter :
     PagingDataAdapter<TipsAndTrick, TipsAndTrickAdapter.ViewHolder>(DIFF_CALLBACK) {
+
+    private var tipsList: List<TipsAndTrick> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = TipsItemBinding.inflate(
@@ -51,6 +53,11 @@ class TipsAndTrickAdapter(private val tipsList: List<TipsAndTrick>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val tips = tipsList[position]
         holder.bind(tips)
+    }
+
+    fun updateData(newTipsList: List<TipsAndTrick>) {
+        tipsList = newTipsList
+        notifyDataSetChanged()
     }
 
     companion object {
