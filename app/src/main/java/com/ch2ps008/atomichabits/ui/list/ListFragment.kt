@@ -57,9 +57,10 @@ class ListFragment : Fragment() {
         }.attach()
 
 
-        adapter = HabitAdapter { habit ->
-            // Handle item click if needed
+        adapter = HabitAdapter{
+
         }
+
         binding.rvHabit.adapter = adapter
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvHabit.layoutManager = layoutManager
