@@ -61,6 +61,7 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="tips_and_trick_image">Tips And Trick Image</string>
+    <string name="source">Source: %1$s:</string>
 
     <string-array name="days_array">
         <item>Monday</item>

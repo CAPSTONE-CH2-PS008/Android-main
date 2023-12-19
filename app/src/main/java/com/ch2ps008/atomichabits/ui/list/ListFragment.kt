@@ -1,6 +1,5 @@
 package com.ch2ps008.atomichabits.ui.list
 
-import HabitAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.ch2ps008.atomichabits.R
+import com.ch2ps008.atomichabits.adapter.HabitAdapter
 import com.ch2ps008.atomichabits.adapter.SectionsPagerAdapter
 import com.ch2ps008.atomichabits.databinding.FragmentListBinding
 import com.ch2ps008.atomichabits.db.Habit

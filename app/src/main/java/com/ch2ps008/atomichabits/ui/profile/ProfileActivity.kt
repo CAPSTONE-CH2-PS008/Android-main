@@ -39,9 +39,9 @@ class ProfileActivity : AppCompatActivity() {
 
         binding.apply {
             btnLogout.setOnClickListener {
-                profileViewModel.logout()
-                profileViewModel.deleteDB()
-                finish()
+                    profileViewModel.logout()
+                    profileViewModel.deleteDB()
+                    finish()
             }
         }
     }

@@ -1,9 +1,12 @@
+package com.ch2ps008.atomichabits.adapter
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ch2ps008.atomichabits.databinding.HabitItemBinding
 import com.ch2ps008.atomichabits.db.Habit
+import com.ch2ps008.atomichabits.util.formatHour
 
 class HabitAdapter(private val onItemClick: (Habit) -> Unit) :
     RecyclerView.Adapter<HabitAdapter.ViewHolder>() {
@@ -16,49 +19,62 @@ class HabitAdapter(private val onItemClick: (Habit) -> Unit) :
             parent,
             false
         )
-        return ViewHolder(binding)
+        return ViewHolder(binding, onItemClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val habit = habits[position]
         holder.bind(habit)
-        holder.itemView.setOnClickListener { onItemClick(habit) }
     }
 
     override fun getItemCount(): Int = habits.size
 
     fun submitList(newHabits: List<Habit>) {
-        val diffResult = DiffUtil.calculateDiff(
-            HabitDiffCallback(habits, newHabits)
-        )
+        val diffResult = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                return habits[oldItemPosition].id == newHabits[newItemPosition].id
+            }
+
+            override fun getOldListSize(): Int = habits.size
+
+            override fun getNewListSize(): Int = newHabits.size
+
+            override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                return habits[oldItemPosition] == newHabits[newItemPosition]
+            }
+        })
+
         habits = newHabits
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class ViewHolder(private val binding: HabitItemBinding) :
+    class ViewHolder(private val binding: HabitItemBinding, private val onItemClick: (Habit) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(habit: Habit) {
-            binding.tvYourActivity.text = habit.activityName
-            // Add other bindings as needed
+            binding.apply {
+                tvYourActivity.text = habit.activityName
+                val startTime = formatHour(habit.startHour)
+                val endTime = formatHour(habit.endHour)
+                tvTime.text = String.format("%s-%s", startTime, endTime)
+
+                itemView.setOnClickListener { onItemClick(habit) }
+            }
         }
     }
 
-    private class HabitDiffCallback(
-        private val oldList: List<Habit>,
-        private val newList: List<Habit>
-    ) : DiffUtil.Callback() {
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Habit>() {
+            override fun areItemsTheSame(oldItem: Habit, newItem: Habit): Boolean {
+                return oldItem.id == newItem.id
+            }
 
-        override fun getOldListSize(): Int = oldList.size
-
-        override fun getNewListSize(): Int = newList.size
-
-        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition].id == newList[newItemPosition].id
-        }
-
-        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition] == newList[newItemPosition]
+            override fun areContentsTheSame(
+                oldItem: Habit,
+                newItem: Habit
+            ): Boolean {
+                return oldItem == newItem
+            }
         }
     }
 }

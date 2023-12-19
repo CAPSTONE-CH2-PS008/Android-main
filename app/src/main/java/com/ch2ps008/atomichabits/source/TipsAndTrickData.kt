@@ -17,7 +17,8 @@ object TipsAndTrickData{
                     "\n" +
                     "Healthy Eating: The Beginner’s Guide on How to Eat Healthy and Stick to It\n" +
                     "Procrastination: A Scientific Guide on How to Stop Procrastinating\n" +
-                    "Focus: The Ultimate Guide on How to Improve Focus and Concentration"
+                    "Focus: The Ultimate Guide on How to Improve Focus and Concentration",
+            source = "https://media.cnn.com/api/v1/images/stellar/prod/211124144641-5-steps-habit-builder-wellness-112421.jpg?q=x_4,y_88,h_2246,w_3991,c_crop/h_653,w_1160/f_webp"
         ),
         TipsAndTrick(
             id = 2,
@@ -25,7 +26,8 @@ object TipsAndTrickData{
             title = "Three Ways to Form Better Habits",
             description = "How to Build a New Habit: This is Your Strategy Guide: Read this guide right now to learn 5 easy, powerful strategies for changing habits.\n" +
                     "How To Start New Habits That Actually Stick: This helpful framework can make it easier to stick to new habits so that you can improve your health, your work, and your life in general.\n" +
-                    "Identity-Based Habits: How to Actually Stick to Your Goals This Year: Most of the time we set our goals in the wrong way. Read this article to learn how identity-based habits can help you achieve your goals more easily."
+                    "Identity-Based Habits: How to Actually Stick to Your Goals This Year: Most of the time we set our goals in the wrong way. Read this article to learn how identity-based habits can help you achieve your goals more easily.",
+            source = "https://media.cnn.com/api/v1/images/stellar/prod/211124144641-5-steps-habit-builder-wellness-112421.jpg?q=x_4,y_88,h_2246,w_3991,c_crop/h_653,w_1160/f_webp"
         )
     )
 }
