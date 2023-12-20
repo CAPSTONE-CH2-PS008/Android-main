@@ -49,17 +49,17 @@ class AddActivity : AppCompatActivity() {
                     val activityName = edActivityName.text.toString()
                     val bobot = spinnerBobot.selectedItemPosition
                     val activityCategory = spinnerActivity.selectedItemPosition
-                    val startHour = edStartHour.text.toString().toInt()
-                    val endHour = edEndHour.text.toString().toInt()
+                    val startHour = edStartHour.text.toString().toIntOrNull()
+                    val endHour = edEndHour.text.toString().toIntOrNull()
                     val interest = spinnerInterest.selectedItemPosition
 
                     if (activityName.isEmpty() || startHour == null || endHour == null) {
                         Toast.makeText(this@AddActivity, "Data harus diisi dengan lengkap", Toast.LENGTH_SHORT).show()
                     } else {
                         addViewModel.addHabit(activityName, bobot,  activityCategory, startHour, endHour, interest)
+                        predict(bobot, activityCategory, startHour, endHour, interest)
                         finish()
                     }
-                    predict(bobot, activityCategory, startHour, endHour, interest)
                 }
 
             }
