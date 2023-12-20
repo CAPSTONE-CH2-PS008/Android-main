@@ -119,6 +119,16 @@ class UserRepository private constructor(
         habitDao.deleteHabit(habit)
     }
 
+    suspend fun deletePredict(predict: Predict) {
+        // Anda perlu menambahkan fungsi deletePredict di PredictDao
+        predictDao.deletePredict(predict)
+    }
+
+    suspend fun undoPredict(predict: Predict) {
+        // Anda perlu menambahkan fungsi insertPredict di PredictDao
+        predictDao.insertPredict(predict)
+    }
+
     companion object {
         private const val TAG = "UserRepository"
 
