@@ -86,9 +86,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveSession(uid: Body) {
-        loginViewModel.saveSession(UserModel(uid.uid))
-        Log.d("Token disimpan", uid.uid)
+    private fun saveSession(body: Body) {
+        loginViewModel.saveSession(UserModel(body.uid, body.displayName, body.email))
+        Log.d("Token disimpan", body.uid)
     }
 
     private fun showLoading(isLoading: Boolean) {

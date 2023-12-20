@@ -17,6 +17,8 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
     suspend fun saveSession(user: UserModel) {
         dataStore.edit { preferences ->
             preferences[UID_KEY] = user.uid
+            preferences[USERNAME_KEY] = user.username
+            preferences[EMAIL_KEY] = user.email
             preferences[IS_LOGIN_KEY] = true
         }
     }
@@ -25,6 +27,8 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         return dataStore.data.map { preferences ->
             UserModel(
                 preferences[UID_KEY] ?: "",
+                preferences[USERNAME_KEY] ?: "",
+                preferences[EMAIL_KEY] ?: "",
                 preferences[IS_LOGIN_KEY] ?: false
             )
         }
@@ -32,9 +36,11 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
 
     fun getUser(): Flow<UserModel> {
         return dataStore.data.map { preferences ->
-            val token = preferences[UID_KEY] ?: ""
-            preferences[IS_LOGIN_KEY] ?: false
-            UserModel(token)
+            val uid = preferences[UID_KEY] ?: ""
+            val username = preferences[USERNAME_KEY] ?: ""
+            val email = preferences[EMAIL_KEY] ?: ""
+            val isLogin = preferences[IS_LOGIN_KEY] ?: false
+            UserModel(uid, username, email, isLogin)
         }
     }
 
@@ -49,6 +55,8 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private var INSTANCE: UserPreference? = null
 
         private val UID_KEY = stringPreferencesKey("uid")
+        private val USERNAME_KEY = stringPreferencesKey("username")
+        private val EMAIL_KEY = stringPreferencesKey("email")
         private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {

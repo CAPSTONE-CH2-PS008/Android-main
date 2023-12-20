@@ -34,6 +34,9 @@ class ProfileActivity : AppCompatActivity() {
             if (!user.isLogin) {
                 startActivity(Intent(this, WelcomeActivity::class.java))
                 finish()
+            } else {
+                binding.tvUsername.text = user.username
+                binding.tvEmail.text = user.email
             }
         }
 
