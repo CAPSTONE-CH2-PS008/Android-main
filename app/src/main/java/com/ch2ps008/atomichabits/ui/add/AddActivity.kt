@@ -31,6 +31,7 @@ class AddActivity : AppCompatActivity() {
     private val addViewModel by viewModels<AddViewModel> {
         ViewModelFactory.getInstance(this)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityAddBinding.inflate(layoutInflater)
@@ -44,7 +45,7 @@ class AddActivity : AppCompatActivity() {
 
         binding.apply {
             edStartHour.filters = arrayOf(MinMaxEditTextInputFilter(0, 23))
-            edEndHour.filters = arrayOf(MinMaxEditTextInputFilter(0,23))
+            edEndHour.filters = arrayOf(MinMaxEditTextInputFilter(0, 23))
             btnSubmit.setOnClickListener {
                 binding.apply {
                     val activityName = edActivityName.text.toString()
@@ -55,9 +56,20 @@ class AddActivity : AppCompatActivity() {
                     val interest = spinnerInterest.selectedItemPosition
 
                     if (activityName.isEmpty() || startHour == null || endHour == null) {
-                        Toast.makeText(this@AddActivity, "Data harus diisi dengan lengkap", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@AddActivity,
+                            "Data harus diisi dengan lengkap",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     } else {
-                        addViewModel.addHabit(activityName, bobot,  activityCategory, startHour, endHour, interest)
+                        addViewModel.addHabit(
+                            activityName,
+                            bobot,
+                            activityCategory,
+                            startHour,
+                            endHour,
+                            interest
+                        )
                         predict(bobot, activityCategory, startHour, endHour, interest)
                         finish()
                     }
@@ -65,28 +77,32 @@ class AddActivity : AppCompatActivity() {
 
             }
         }
-}
+    }
 
-    private fun predict(Bobot: Int,
-                        Activity: Int,
-                        Start_Time: Int,
-                        End_Time: Int,
-                        Interest: Int) {
-        addViewModel.postPredict(Bobot, Activity, Start_Time, End_Time, Interest).observe(this) { result ->
-            when (result) {
-                is Result.Loading -> {
-                    showLoading(true)
-                }
-
-                is Result.Success -> {
-                    showLoading(false)
+    private fun predict(
+        Bobot: Int,
+        Activity: Int,
+        Start_Time: Int,
+        End_Time: Int,
+        Interest: Int
+    ) {
+        addViewModel.postPredict(Bobot, Activity, Start_Time, End_Time, Interest)
+            .observe(this) { result ->
+                when (result) {
+                    is Result.Loading -> {
+                        showLoading(true)
                     }
 
-                is Result.Error -> {
-                    showLoading(false)
+                    is Result.Success -> {
+                        showLoading(false)
+                        saveResult(result.data.result)
+                    }
+
+                    is Result.Error -> {
+                        showLoading(false)
+                    }
                 }
             }
-        }
     }
 
     class MinMaxEditTextInputFilter(private val mMin: Int, private val mMax: Int) : InputFilter {
@@ -151,7 +167,7 @@ class AddActivity : AppCompatActivity() {
         val spinnerInterest = binding.spinnerInterest
 
         val days = resources.getStringArray(R.array.interest_array)
-        val dayValues = arrayOf(0,1,2)
+        val dayValues = arrayOf(0, 1, 2)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, days)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -178,7 +194,7 @@ class AddActivity : AppCompatActivity() {
         val spinnerBobot = binding.spinnerBobot
 
         val bobot = resources.getStringArray(R.array.bobot_array)
-        val bobotValues = arrayOf(1,2,3)
+        val bobotValues = arrayOf(1, 2, 3)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bobot)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -209,6 +225,10 @@ class AddActivity : AppCompatActivity() {
                 progressBar.visibility = View.GONE
             }
         }
+    }
+
+    private fun saveResult(result: Int){
+        addViewModel.saveResult(result)
     }
 
     private fun updateCustomActionBarTitle(title: String) {

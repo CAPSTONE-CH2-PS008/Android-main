@@ -137,6 +137,13 @@ class UserRepository private constructor(
         habitDao.insertHabit(newHabit)
     }
 
+    suspend fun saveResult(result: Int){
+        val predictResult = Predict(
+            result = result
+        )
+        predictDao.insertPredict(predictResult)
+    }
+
     suspend fun undoHabit(habit: Habit) {
         habitDao.insertHabit(habit)
     }

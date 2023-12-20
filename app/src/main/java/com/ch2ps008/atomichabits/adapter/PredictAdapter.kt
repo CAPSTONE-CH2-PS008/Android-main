@@ -64,7 +64,7 @@ class PredictAdapter(private val predict: List<Predict>) :
         fun bind(habit: Predict) {
             getHabit = habit
             binding.apply {
-                tvYourActivity.text = habit.result
+                tvYourActivity.text = habit.result.toString()
 //                val startTime = formatHour(habit.startHour)
 //                val endTime = formatHour(habit.endHour)
 //                tvTime.text = String.format("%s-%s", startTime, endTime)
