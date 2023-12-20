@@ -1,10 +1,12 @@
 package com.ch2ps008.atomichabits.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ch2ps008.atomichabits.databinding.HabitItemBinding
+import com.ch2ps008.atomichabits.databinding.PredictItemBinding
 import com.ch2ps008.atomichabits.db.Predict
 
 class PredictAdapter :
@@ -13,7 +15,7 @@ class PredictAdapter :
     private var habits: List<Predict> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = HabitItemBinding.inflate(
+        val binding = PredictItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -47,7 +49,7 @@ class PredictAdapter :
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class ViewHolder(private val binding: HabitItemBinding) :
+    class ViewHolder(private val binding: PredictItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         lateinit var getHabit: Predict
@@ -56,15 +58,18 @@ class PredictAdapter :
             getHabit = habit
             binding.apply {
                 tvYourActivity.text = habit.result.toString()
-//                val startTime = formatHour(habit.startHour)
-//                val endTime = formatHour(habit.endHour)
-//                tvTime.text = String.format("%s-%s", startTime, endTime)
-//
-//                val sdf = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
-//                val creationDate = sdf.format(Date(habit.creationDate))
-//                tvDate.text = creationDate
-
+                tvYourActivity.setTextColor(getColorForResult(habit.result))
                 itemView.setOnClickListener {  }
+            }
+        }
+
+        private fun getColorForResult(result: Int): Int {
+            return when (result) {
+                0 -> Color.RED
+                1 -> Color.parseColor("#FFA500")
+                2 -> Color.parseColor("#00FF00")
+                3 -> Color.GREEN
+                else -> Color.WHITE
             }
         }
     }
