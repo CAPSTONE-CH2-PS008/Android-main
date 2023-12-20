@@ -14,6 +14,8 @@ data class Habit (
     val id: Int = 0,
     @ColumnInfo(name = "activityName")
     val activityName: String,
+    @ColumnInfo(name = "bobot")
+    val bobot: Int,
     @ColumnInfo(name = "activityCategory")
     val activityCategory: Int,
     @ColumnInfo(name = "startHour")

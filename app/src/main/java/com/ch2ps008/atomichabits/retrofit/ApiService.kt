@@ -1,8 +1,10 @@
 package com.ch2ps008.atomichabits.retrofit
 
 import com.ch2ps008.atomichabits.data.LoginRequest
+import com.ch2ps008.atomichabits.data.PredictRequest
 import com.ch2ps008.atomichabits.data.RegisterRequest
 import com.ch2ps008.atomichabits.response.LoginResponse
+import com.ch2ps008.atomichabits.response.PredictResponse
 import com.ch2ps008.atomichabits.response.RegisterResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -21,7 +23,7 @@ interface ApiService {
     @POST
     suspend fun predict(
         @Url url: String,
-        @Body request: LoginRequest
-    ): LoginResponse
+        @Body request: PredictRequest
+    ): PredictResponse
 
 }
