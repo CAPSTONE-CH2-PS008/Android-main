@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class HabitAdapter(private val habit : List<Habit>) :
+class HabitAdapter :
     RecyclerView.Adapter<HabitAdapter.ViewHolder>() {
 
     private var habits: List<Habit> = listOf()
@@ -32,9 +32,6 @@ class HabitAdapter(private val habit : List<Habit>) :
 
     override fun getItemCount(): Int = habits.size
 
-    fun getHabitAt(position: Int): Habit {
-        return habits[position]
-    }
 
     fun submitList(newHabits: List<Habit>) {
         val diffResult = DiffUtil.calculateDiff(object : DiffUtil.Callback() {

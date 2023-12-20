@@ -85,9 +85,13 @@
     </string-array>
 
     <string-array name="interest_array">
-        <item>Not Interested</item>
-        <item>Neutral</item>
-        <item>Interested</item>
+        <item>Hate</item>
+        <item>Avoid</item>
+        <item>Lazy</item>
+        <item>Natural</item>
+        <item>Like</item>
+        <item>Favorite</item>
+        <item>Hype</item>
     </string-array>
 
     <string-array name="bobot_array">

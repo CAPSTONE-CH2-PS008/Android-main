@@ -4,19 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.adapter.TipsAndTrickAdapter
 import com.ch2ps008.atomichabits.databinding.FragmentTipsandtrickBinding
-import com.ch2ps008.atomichabits.source.TipsAndTrickData
 import com.ch2ps008.atomichabits.ui.main.MainActivity
-import com.ch2ps008.atomichabits.ui.register.RegisterViewModel
 import com.ch2ps008.atomichabits.util.ViewModelFactory
-import java.util.ArrayList
 
 class TipsAndTrickFragment : Fragment() {
 

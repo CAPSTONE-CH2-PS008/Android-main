@@ -1,15 +1,14 @@
 package com.ch2ps008.atomichabits.ui.tipsandtrick
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat.getParcelableExtra
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.ActivityDetailTipsBinding
 import com.ch2ps008.atomichabits.source.TipsAndTrick
 import com.ch2ps008.atomichabits.util.loadImage
-import java.util.TimeZone
 
 class DetailTipsActivity : AppCompatActivity() {
 

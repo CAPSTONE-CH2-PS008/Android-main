@@ -1,26 +1,21 @@
 package com.ch2ps008.atomichabits.ui.habit
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.adapter.HabitAdapter
 import com.ch2ps008.atomichabits.adapter.PredictAdapter
-import com.ch2ps008.atomichabits.databinding.ActivityProfileBinding
 import com.ch2ps008.atomichabits.databinding.FragmentHabitBinding
-import com.ch2ps008.atomichabits.databinding.FragmentTipsandtrickBinding
 import com.ch2ps008.atomichabits.db.Habit
 import com.ch2ps008.atomichabits.db.Predict
 import com.ch2ps008.atomichabits.ui.list.ListViewModel
 import com.ch2ps008.atomichabits.util.ViewModelFactory
-import com.ch2ps008.atomichabits.response.Result
-import com.google.android.material.snackbar.Snackbar
 
 class HabitFragment : Fragment() {
 
@@ -70,7 +65,7 @@ class HabitFragment : Fragment() {
         recycler = binding.rvHabit
         recycler.layoutManager = LinearLayoutManager(requireActivity())
 
-        val adapter = HabitAdapter(habit)
+        val adapter = HabitAdapter()
         adapter.submitList(habit)
         binding.rvHabit.adapter = adapter
 
@@ -81,7 +76,7 @@ class HabitFragment : Fragment() {
         recycler = binding.rvHabit
         recycler.layoutManager = LinearLayoutManager(requireActivity())
 
-        val adapter = PredictAdapter(habit)
+        val adapter = PredictAdapter()
         binding.rvHabit.adapter = adapter
 
         recycler.adapter = adapter

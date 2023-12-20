@@ -5,14 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ch2ps008.atomichabits.databinding.HabitItemBinding
-import com.ch2ps008.atomichabits.db.Habit
 import com.ch2ps008.atomichabits.db.Predict
-import com.ch2ps008.atomichabits.util.formatHour
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
-class PredictAdapter(private val predict: List<Predict>) :
+class PredictAdapter :
     RecyclerView.Adapter<PredictAdapter.ViewHolder>() {
 
     private var habits: List<Predict> = listOf()
@@ -32,10 +27,6 @@ class PredictAdapter(private val predict: List<Predict>) :
     }
 
     override fun getItemCount(): Int = habits.size
-
-    fun getPredictAt(position: Int): Predict {
-        return habits[position]
-    }
 
     fun submitList(newHabits: List<Predict>) {
         val diffResult = DiffUtil.calculateDiff(object : DiffUtil.Callback() {

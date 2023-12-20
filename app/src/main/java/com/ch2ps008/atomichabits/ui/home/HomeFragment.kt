@@ -7,13 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.ch2ps008.atomichabits.R
-import com.ch2ps008.atomichabits.adapter.HabitAdapter
 import com.ch2ps008.atomichabits.adapter.HomeAdapter
 import com.ch2ps008.atomichabits.databinding.FragmentHomeBinding
-import com.ch2ps008.atomichabits.databinding.FragmentListBinding
-import com.ch2ps008.atomichabits.ui.list.ListViewModel
 import com.ch2ps008.atomichabits.ui.main.MainActivity
 import com.ch2ps008.atomichabits.util.ViewModelFactory
 import java.text.SimpleDateFormat

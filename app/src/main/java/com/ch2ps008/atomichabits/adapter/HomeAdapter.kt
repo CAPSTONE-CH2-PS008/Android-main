@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ch2ps008.atomichabits.databinding.HabitCardviewBinding
 import com.ch2ps008.atomichabits.db.Habit
-import com.ch2ps008.atomichabits.util.formatHour
 import kotlin.math.abs
 
 class HomeAdapter(private val onItemClick: (Habit) -> Unit) :

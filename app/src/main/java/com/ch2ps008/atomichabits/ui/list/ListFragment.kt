@@ -1,27 +1,16 @@
 package com.ch2ps008.atomichabits.ui.list
 
-import android.app.ProgressDialog.show
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.annotation.StringRes
-import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.ch2ps008.atomichabits.R
-import com.ch2ps008.atomichabits.adapter.HabitAdapter
 import com.ch2ps008.atomichabits.adapter.SectionsPagerAdapter
 import com.ch2ps008.atomichabits.databinding.FragmentListBinding
-import com.ch2ps008.atomichabits.db.Habit
 import com.ch2ps008.atomichabits.ui.main.MainActivity
-import com.ch2ps008.atomichabits.util.ViewModelFactory
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

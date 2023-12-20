@@ -1,7 +1,5 @@
 package com.ch2ps008.atomichabits.ui.add
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputFilter
 import android.text.Spanned
@@ -9,18 +7,14 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.ActivityAddBinding
-import com.ch2ps008.atomichabits.databinding.ActivityRegisterBinding
 import com.ch2ps008.atomichabits.response.Result
-import com.ch2ps008.atomichabits.ui.main.MainActivity
-import com.ch2ps008.atomichabits.ui.profile.ProfileViewModel
 import com.ch2ps008.atomichabits.util.ViewModelFactory
 
 class AddActivity : AppCompatActivity() {
@@ -71,7 +65,6 @@ class AddActivity : AppCompatActivity() {
                             interest
                         )
                         predict(bobot, activityCategory, startHour, endHour, interest)
-                        finish()
                     }
                 }
 
@@ -96,6 +89,7 @@ class AddActivity : AppCompatActivity() {
                     is Result.Success -> {
                         showLoading(false)
                         saveResult(result.data.result)
+                        finish()
                     }
 
                     is Result.Error -> {
@@ -167,7 +161,7 @@ class AddActivity : AppCompatActivity() {
         val spinnerInterest = binding.spinnerInterest
 
         val days = resources.getStringArray(R.array.interest_array)
-        val dayValues = arrayOf(0, 1, 2)
+        val dayValues = arrayOf(-3,-2,-1,0,1,2,3)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, days)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -177,7 +171,7 @@ class AddActivity : AppCompatActivity() {
         spinnerInterest.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parentView: AdapterView<*>,
-                selectedItemView: android.view.View?,
+                selectedItemView: View?,
                 position: Int,
                 id: Long
             ) {
@@ -204,7 +198,7 @@ class AddActivity : AppCompatActivity() {
         spinnerBobot.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parentView: AdapterView<*>,
-                selectedItemView: android.view.View?,
+                selectedItemView: View?,
                 position: Int,
                 id: Long
             ) {

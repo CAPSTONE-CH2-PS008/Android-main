@@ -3,12 +3,11 @@ package com.ch2ps008.atomichabits.injection
 import android.content.Context
 import android.util.Log
 import com.ch2ps008.atomichabits.R
-import com.ch2ps008.atomichabits.repository.UserRepository
-import com.ch2ps008.atomichabits.retrofit.ApiConfig
 import com.ch2ps008.atomichabits.auth.UserPreference
 import com.ch2ps008.atomichabits.auth.dataStore
-import com.ch2ps008.atomichabits.db.HabitDao
 import com.ch2ps008.atomichabits.db.HabitDatabase
+import com.ch2ps008.atomichabits.repository.UserRepository
+import com.ch2ps008.atomichabits.retrofit.ApiConfig
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
