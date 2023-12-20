@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.InputFilter
 import android.text.Spanned
 import android.util.Log
+import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -74,15 +75,15 @@ class AddActivity : AppCompatActivity() {
         addViewModel.postPredict(Bobot, Activity, Start_Time, End_Time, Interest).observe(this) { result ->
             when (result) {
                 is Result.Loading -> {
-//                    showLoading(true)
+                    showLoading(true)
                 }
 
                 is Result.Success -> {
-//                    showLoading(false)
+                    showLoading(false)
                     }
 
                 is Result.Error -> {
-//                    showLoading(false)
+                    showLoading(false)
                 }
             }
         }
@@ -196,6 +197,16 @@ class AddActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {
+            }
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.apply {
+            if (isLoading) {
+                progressBar.visibility = View.VISIBLE
+            } else {
+                progressBar.visibility = View.GONE
             }
         }
     }
