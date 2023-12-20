@@ -28,19 +28,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class ListFragment : Fragment() {
 
     private var _binding: FragmentListBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
-
-    private lateinit var adapter: HabitAdapter
-
-    private val mainViewModel by viewModels<ListViewModel> {
-        ViewModelFactory.getInstance(requireActivity())
-    }
-
-    private lateinit var recycler: RecyclerView
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -63,65 +51,11 @@ class ListFragment : Fragment() {
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
 
-//
-//        adapter = HabitAdapter {
-//
-//        }
-//        binding.rvHabit.adapter = adapter
-//
-//        val layoutManager = LinearLayoutManager(requireActivity())
-//        recycler = binding.rvHabit
-//        recycler.layoutManager = layoutManager
-//
-//        initAction()
-//        setupAction()
-    }
-
-    private fun setupAction() {
-        mainViewModel.getHabit().observe(viewLifecycleOwner) { habits ->
-            adapter.submitList(habits)
-        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun initAction() {
-        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
-            override fun getMovementFlags(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder
-            ): Int {
-                return makeMovementFlags(0, ItemTouchHelper.RIGHT)
-            }
-
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                val habit = adapter.getHabitAt(position)
-
-                mainViewModel.deleteTask(habit)
-
-                view?.let {
-                    Snackbar.make(it, "Habit berhasil dihapus", Snackbar.LENGTH_LONG).apply {
-                        setAction("Undo") {
-                            mainViewModel.undoHabit(habit)
-                        }
-                        show()
-                    }
-                }
-            }
-        })
-        itemTouchHelper.attachToRecyclerView(recycler)
     }
 
     companion object {

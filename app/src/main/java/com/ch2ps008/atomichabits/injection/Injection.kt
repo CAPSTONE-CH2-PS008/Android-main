@@ -20,7 +20,8 @@ object Injection {
         val apiService = ApiConfig.getApiService()
         val habitDatabase = HabitDatabase.getDatabase(context)
         val habitDao = habitDatabase.habitDao()
+        val predictDao = habitDatabase.predictDao()
 
-        return UserRepository.getInstance(apiService, pref, habitDao)
+        return UserRepository.getInstance(apiService, pref, habitDao, predictDao)
     }
 }

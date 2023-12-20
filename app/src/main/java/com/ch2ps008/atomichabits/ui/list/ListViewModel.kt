@@ -13,6 +13,8 @@ class ListViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun getHabit() = repository.getHabitId()
 
+    fun getPredict() = repository.getPredict()
+
     fun deleteTask(habit: Habit) {
         viewModelScope.launch {
             repository.deleteHabit(habit)

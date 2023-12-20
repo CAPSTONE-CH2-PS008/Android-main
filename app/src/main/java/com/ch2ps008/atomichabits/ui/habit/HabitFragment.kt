@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.adapter.HabitAdapter
+import com.ch2ps008.atomichabits.adapter.PredictAdapter
 import com.ch2ps008.atomichabits.databinding.ActivityProfileBinding
 import com.ch2ps008.atomichabits.databinding.FragmentHabitBinding
 import com.ch2ps008.atomichabits.databinding.FragmentTipsandtrickBinding
 import com.ch2ps008.atomichabits.db.Habit
+import com.ch2ps008.atomichabits.db.Predict
 import com.ch2ps008.atomichabits.ui.list.ListViewModel
 import com.ch2ps008.atomichabits.util.ViewModelFactory
 import com.ch2ps008.atomichabits.response.Result
@@ -29,7 +31,6 @@ class HabitFragment : Fragment() {
         ViewModelFactory.getInstance(requireActivity())
     }
 
-    private lateinit var adapter: HabitAdapter
 
     private lateinit var recycler: RecyclerView
 
@@ -44,12 +45,13 @@ class HabitFragment : Fragment() {
                 1 -> {
                     listViewModel.getHabit().observe(viewLifecycleOwner){
                         setData(it)
-                        initAction()
+
                     }
                 }
-
                 2 -> {
-
+                    listViewModel.getPredict().observe(viewLifecycleOwner){
+                        setPredict(it)
+                    }
                 }
             }
         }
@@ -67,47 +69,59 @@ class HabitFragment : Fragment() {
         recycler = binding.rvHabit
         recycler.layoutManager = LinearLayoutManager(requireActivity())
 
-        adapter = HabitAdapter(habit)
+        val adapter = HabitAdapter(habit)
+        binding.rvHabit.adapter = adapter
+
+        recycler.adapter = adapter
+        adapter.submitList(habit)
+    }
+    private fun setPredict(habit: List<Predict>) {
+        recycler = binding.rvHabit
+        recycler.layoutManager = LinearLayoutManager(requireActivity())
+
+        val adapter = PredictAdapter(habit)
+        binding.rvHabit.adapter = adapter
 
         recycler.adapter = adapter
         adapter.submitList(habit)
     }
 
-    private fun initAction() {
-        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
-            override fun getMovementFlags(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder
-            ): Int {
-                return makeMovementFlags(0, ItemTouchHelper.RIGHT)
-            }
-
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                val habit = adapter.getHabitAt(position)
-
-                listViewModel.deleteTask(habit)
-
-                view?.let {
-                    Snackbar.make(it, "Habit berhasil dihapus", Snackbar.LENGTH_LONG).apply {
-                        setAction("Undo") {
-                            listViewModel.undoHabit(habit)
-                        }
-                        show()
-                    }
-                }
-            }
-        })
-        itemTouchHelper.attachToRecyclerView(recycler)
-    }
+//    private fun initAction(habit: Habit) {
+//        val adapter = HabitAdapter(habit)
+//        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
+//            override fun getMovementFlags(
+//                recyclerView: RecyclerView,
+//                viewHolder: RecyclerView.ViewHolder
+//            ): Int {
+//                return makeMovementFlags(0, ItemTouchHelper.RIGHT)
+//            }
+//
+//            override fun onMove(
+//                recyclerView: RecyclerView,
+//                viewHolder: RecyclerView.ViewHolder,
+//                target: RecyclerView.ViewHolder
+//            ): Boolean {
+//                return false
+//            }
+//
+//            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+//                val position = viewHolder.adapterPosition
+//                val habit = adapter.getHabitAt(position)
+//
+//                listViewModel.deleteTask(habit)
+//
+//                view?.let {
+//                    Snackbar.make(it, "Habit berhasil dihapus", Snackbar.LENGTH_LONG).apply {
+//                        setAction("Undo") {
+//                            listViewModel.undoHabit(habit)
+//                        }
+//                        show()
+//                    }
+//                }
+//            }
+//        })
+//        itemTouchHelper.attachToRecyclerView(recycler)
+//    }
 
     companion object {
         const val ARG_HABIT = "habit"

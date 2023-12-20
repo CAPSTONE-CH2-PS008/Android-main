@@ -16,6 +16,8 @@ import com.ch2ps008.atomichabits.auth.UserModel
 import com.ch2ps008.atomichabits.auth.UserPreference
 import com.ch2ps008.atomichabits.db.Habit
 import com.ch2ps008.atomichabits.db.HabitDao
+import com.ch2ps008.atomichabits.db.Predict
+import com.ch2ps008.atomichabits.db.PredictDao
 import com.ch2ps008.atomichabits.source.TipsAndTrick
 import com.ch2ps008.atomichabits.source.TipsAndTrickData
 import kotlinx.coroutines.flow.Flow
@@ -24,7 +26,8 @@ import kotlinx.coroutines.flow.flow
 class UserRepository private constructor(
     private val userPreference: UserPreference,
     private val apiService: ApiService,
-    private val habitDao: HabitDao
+    private val habitDao: HabitDao,
+    private val predictDao: PredictDao
 ) {
 
     fun login(email: String, password: String): LiveData<Result<LoginResponse>> =
@@ -83,6 +86,8 @@ class UserRepository private constructor(
 
     fun getHabitId(): LiveData<List<Habit>> = habitDao.getHabit()
 
+    fun getPredict(): LiveData<List<Predict>> = predictDao.getPredict()
+
     suspend fun insertHabit(
         activityName: String,
         spinnerActivity: Int,
@@ -120,7 +125,8 @@ class UserRepository private constructor(
         fun getInstance(
             apiService: ApiService,
             userPreference: UserPreference,
-            habitDao: HabitDao
-        ): UserRepository = UserRepository(userPreference, apiService, habitDao )
+            habitDao: HabitDao,
+            predictDao: PredictDao
+        ): UserRepository = UserRepository(userPreference, apiService, habitDao, predictDao )
     }
 }
