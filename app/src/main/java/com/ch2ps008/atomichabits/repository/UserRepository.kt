@@ -88,14 +88,16 @@ class UserRepository private constructor(
         spinnerActivity: Int,
         startHour: Int,
         endHour: Int,
-        spinnerInterest: Int
+        spinnerInterest: Int,
+        creationDate: Long
     ) {
         val newHabit = Habit(
             activityName = activityName,
             activityCategory = spinnerActivity,
             startHour = startHour,
             endHour = endHour,
-            interest = spinnerInterest
+            interest = spinnerInterest,
+            creationDate = creationDate
         )
         habitDao.insertHabit(newHabit)
     }

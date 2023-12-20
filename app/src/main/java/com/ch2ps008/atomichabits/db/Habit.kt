@@ -22,4 +22,6 @@ data class Habit (
     val endHour: Int,
     @ColumnInfo(name = "interest")
     val interest: Int,
+    @ColumnInfo(name = "creationDate")
+    val creationDate: Long,
 ): Parcelable

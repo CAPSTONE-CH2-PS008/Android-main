@@ -15,7 +15,8 @@ class AddViewModel(private val repository: UserRepository): ViewModel() {
         endHour: Int,
         interest: Int
     ) = viewModelScope.launch {
-        repository.insertHabit(activityName, activityCategory, startHour, endHour, interest)
+        val creationDate = System.currentTimeMillis()
+        repository.insertHabit(activityName, activityCategory, startHour, endHour, interest, creationDate)
     }
 
 }

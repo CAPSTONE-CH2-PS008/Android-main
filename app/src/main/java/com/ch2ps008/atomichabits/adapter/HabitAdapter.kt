@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ch2ps008.atomichabits.databinding.HabitItemBinding
 import com.ch2ps008.atomichabits.db.Habit
 import com.ch2ps008.atomichabits.util.formatHour
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class HabitAdapter(private val onItemClick: (Habit) -> Unit) :
     RecyclerView.Adapter<HabitAdapter.ViewHolder>() {
@@ -60,6 +63,10 @@ class HabitAdapter(private val onItemClick: (Habit) -> Unit) :
                 val startTime = formatHour(habit.startHour)
                 val endTime = formatHour(habit.endHour)
                 tvTime.text = String.format("%s-%s", startTime, endTime)
+
+                val sdf = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+                val creationDate = sdf.format(Date(habit.creationDate))
+                tvDate.text = creationDate
 
                 itemView.setOnClickListener { onItemClick(habit) }
             }
