@@ -102,7 +102,7 @@ class HabitFragment : Fragment() {
                 val position = viewHolder.adapterPosition
 
                 // Memeriksa apakah posisi valid sebelum mencoba mengakses elemen di daftar
-                if (position < adapter.itemCount) {
+                if (position >= 0 && position < adapter.itemCount) {
                     val habit = adapter.getHabitAt(position)
 
                     listViewModel.deleteTask(habit)
