@@ -1,5 +1,6 @@
 package com.ch2ps008.atomichabits.adapter
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
@@ -37,15 +38,15 @@ class TipsAndTrickAdapter :
                     .load(tips.photoUrl)
                     .centerCrop()
                     .into(ivTips)
-            }
-            binding.root.setOnClickListener {
-                val detailIntent = Intent(binding.root.context, DetailTipsActivity::class.java)
-                detailIntent.putExtra(DetailTipsActivity.DETAIL_TIPS, tips)
-                itemView.context.startActivity(
-                    detailIntent,
-                    ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity)
-                        .toBundle()
-                )
+                root.setOnClickListener {
+                    val detailIntent = Intent(binding.root.context, DetailTipsActivity::class.java)
+                    detailIntent.putExtra(DetailTipsActivity.DETAIL_TIPS, tips)
+                    itemView.context.startActivity(
+                        detailIntent,
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity)
+                            .toBundle()
+                    )
+                }
             }
         }
     }
@@ -57,7 +58,6 @@ class TipsAndTrickAdapter :
 
     fun updateData(newTipsList: List<TipsAndTrick>) {
         tipsList = newTipsList
-        notifyDataSetChanged()
     }
 
     companion object {

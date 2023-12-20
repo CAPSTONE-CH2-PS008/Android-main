@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import androidx.core.content.IntentCompat.getParcelableExtra
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.ActivityDetailTipsBinding
 import com.ch2ps008.atomichabits.source.TipsAndTrick
@@ -26,9 +27,8 @@ class DetailTipsActivity : AppCompatActivity() {
     }
 
     private fun setData() {
-        @Suppress("DEPRECATION")
-        val tips = intent.getParcelableExtra<TipsAndTrick>(DETAIL_TIPS) as TipsAndTrick
-        loadImage(applicationContext, tips.photoUrl, binding.ivTips)
+        val tips = getParcelableExtra(intent, DETAIL_TIPS, TipsAndTrick::class.java)
+        loadImage(applicationContext, tips!!.photoUrl, binding.ivTips)
         binding.tvTipsTitle.text = tips.title
         binding.tvDescription.text = tips.description
         val sourceText = getString(R.string.source, tips.source)
