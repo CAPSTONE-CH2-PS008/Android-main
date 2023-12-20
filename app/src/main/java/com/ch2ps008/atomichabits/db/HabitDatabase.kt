@@ -6,13 +6,15 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [Habit::class],
+    entities = [Habit::class, Predict::class],
     version = 2,
     exportSchema = false
 )
 abstract class HabitDatabase : RoomDatabase() {
 
     abstract fun habitDao(): HabitDao
+
+    abstract fun predictDao(): PredictDao
 
     companion object {
         @Volatile

@@ -27,6 +27,7 @@ android {
 
         // Set the base URL in buildConfigField
         buildConfigField("String", "BASE_URL", "\"${localProperties.getProperty("BASE_URL")}\"")
+        buildConfigField("String", "BASE_URL2", "\"${localProperties.getProperty("BASE_URL2")}\"")
     }
 
     buildTypes {

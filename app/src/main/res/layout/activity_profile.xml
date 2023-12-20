@@ -11,7 +11,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="50dp"
-        android:src="@drawable/ic_account_circle_24dp"
+        android:src="@drawable/ic_big_account_circle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,9 +24,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/circleImageView"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textColor="@color/white"
-        android:text="Username"/>
+        android:text="@string/username"/>
 
     <TextView
         android:id="@+id/tvEmail"
@@ -36,9 +36,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUsername"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textColor="@color/white"
-        android:text="Email"/>
+        android:text="@string/email"/>
 
     <Button
         android:id="@+id/btnLogout"
