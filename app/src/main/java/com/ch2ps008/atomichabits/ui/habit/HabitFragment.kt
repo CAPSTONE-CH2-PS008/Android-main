@@ -45,7 +45,6 @@ class HabitFragment : Fragment() {
                 1 -> {
                     listViewModel.getHabit().observe(viewLifecycleOwner){
                         setData(it)
-
                     }
                 }
                 2 -> {
@@ -70,6 +69,7 @@ class HabitFragment : Fragment() {
         recycler.layoutManager = LinearLayoutManager(requireActivity())
 
         val adapter = HabitAdapter(habit)
+        adapter.submitList(habit)
         binding.rvHabit.adapter = adapter
 
         recycler.adapter = adapter
@@ -100,16 +100,20 @@ class HabitFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val habit = adapter.getHabitAt(position)
 
-                listViewModel.deleteTask(habit)
+                // Memeriksa apakah posisi valid sebelum mencoba mengakses elemen di daftar
+                if (position < adapter.itemCount) {
+                    val habit = adapter.getHabitAt(position)
 
-                view?.let {
-                    Snackbar.make(it, "Habit berhasil dihapus", Snackbar.LENGTH_LONG).apply {
-                        setAction("Undo") {
-                            listViewModel.undoHabit(habit)
+                    listViewModel.deleteTask(habit)
+
+                    view?.let {
+                        Snackbar.make(it, "Habit berhasil dihapus", Snackbar.LENGTH_LONG).apply {
+                            setAction("Undo") {
+                                listViewModel.undoHabit(habit)
+                            }
+                            show()
                         }
-                        show()
                     }
                 }
             }

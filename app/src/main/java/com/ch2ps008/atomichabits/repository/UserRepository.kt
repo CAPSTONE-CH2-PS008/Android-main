@@ -3,6 +3,7 @@ package com.ch2ps008.atomichabits.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import com.ch2ps008.atomichabits.BuildConfig.BASE_URL2
 import com.ch2ps008.atomichabits.response.ErrorResponse
 import com.ch2ps008.atomichabits.response.LoginResponse
 import com.ch2ps008.atomichabits.retrofit.ApiService
@@ -14,10 +15,12 @@ import com.ch2ps008.atomichabits.data.RegisterRequest
 import com.ch2ps008.atomichabits.response.RegisterResponse
 import com.ch2ps008.atomichabits.auth.UserModel
 import com.ch2ps008.atomichabits.auth.UserPreference
+import com.ch2ps008.atomichabits.data.PredictRequest
 import com.ch2ps008.atomichabits.db.Habit
 import com.ch2ps008.atomichabits.db.HabitDao
 import com.ch2ps008.atomichabits.db.Predict
 import com.ch2ps008.atomichabits.db.PredictDao
+import com.ch2ps008.atomichabits.response.PredictResponse
 import com.ch2ps008.atomichabits.source.TipsAndTrick
 import com.ch2ps008.atomichabits.source.TipsAndTrickData
 import kotlinx.coroutines.flow.Flow
@@ -68,6 +71,31 @@ class UserRepository private constructor(
             }
         }
 
+    fun predict(
+        Bobot: Int,
+        Activity: Int,
+        Start_Time: Int,
+        End_Time: Int,
+        Interest: Int
+    ): LiveData<Result<PredictResponse>> =
+        liveData {
+            emit(Result.Loading)
+            try {
+                val loginResponse = apiService.predict(BASE_URL2,
+                    PredictRequest(Bobot, Activity, Start_Time, End_Time, Interest)
+                )
+                emit(Result.Success(loginResponse))
+
+            } catch (e: HttpException) {
+                val error = e.response()?.errorBody()?.string()
+                val errorRes = Gson().fromJson(error, ErrorResponse::class.java)
+                Log.d(TAG, "predict: ${e.message.toString()}")
+                emit(Result.Error(errorRes.error))
+            } catch (e: Exception) {
+                emit(Result.Error(e.toString()))
+            }
+        }
+
     suspend fun logout() {
         userPreference.logout()
     }
@@ -90,6 +118,7 @@ class UserRepository private constructor(
 
     suspend fun insertHabit(
         activityName: String,
+        bobot: Int,
         spinnerActivity: Int,
         startHour: Int,
         endHour: Int,
@@ -98,11 +127,12 @@ class UserRepository private constructor(
     ) {
         val newHabit = Habit(
             activityName = activityName,
+            bobot = bobot,
             activityCategory = spinnerActivity,
             startHour = startHour,
             endHour = endHour,
             interest = spinnerInterest,
-            creationDate = creationDate
+            creationDate = creationDate,
         )
         habitDao.insertHabit(newHabit)
     }
@@ -120,12 +150,10 @@ class UserRepository private constructor(
     }
 
     suspend fun deletePredict(predict: Predict) {
-        // Anda perlu menambahkan fungsi deletePredict di PredictDao
         predictDao.deletePredict(predict)
     }
 
     suspend fun undoPredict(predict: Predict) {
-        // Anda perlu menambahkan fungsi insertPredict di PredictDao
         predictDao.insertPredict(predict)
     }
 

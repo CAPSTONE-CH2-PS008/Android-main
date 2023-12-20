@@ -22,33 +22,21 @@ class ListViewModel(private val repository: UserRepository) : ViewModel() {
         }
     }
 
-    fun deletePredict(predict: Predict) {
-        viewModelScope.launch {
-            repository.deletePredict(predict)
-        }
-    }
 
     fun undoHabit(habit: Habit) {
         viewModelScope.launch {
             repository.undoHabit(habit)
         }
     }
-    fun undoPredict(predict: Predict) {
-        viewModelScope.launch {
-            repository.undoPredict(predict)
-        }
-    }
 
     fun deletePredict(predict: Predict) {
         viewModelScope.launch {
-            // Anda perlu menambahkan fungsi deletePredict di UserRepository
             repository.deletePredict(predict)
         }
     }
 
     fun undoPredict(predict: Predict) {
         viewModelScope.launch {
-            // Anda perlu menambahkan fungsi undoPredict di UserRepository
             repository.undoPredict(predict)
         }
     }
