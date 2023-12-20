@@ -1,5 +1,6 @@
 package com.ch2ps008.atomichabits.ui.add
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputFilter
@@ -12,9 +13,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.ActivityAddBinding
 import com.ch2ps008.atomichabits.databinding.ActivityRegisterBinding
+import com.ch2ps008.atomichabits.response.Result
+import com.ch2ps008.atomichabits.ui.main.MainActivity
 import com.ch2ps008.atomichabits.ui.profile.ProfileViewModel
 import com.ch2ps008.atomichabits.util.ViewModelFactory
 
@@ -34,6 +38,7 @@ class AddActivity : AppCompatActivity() {
         updateCustomActionBarTitle(getString(R.string.add_activity))
 
         dropdownActivity()
+        dropdownBobot()
         dropdownInterest()
 
         binding.apply {
@@ -42,21 +47,46 @@ class AddActivity : AppCompatActivity() {
             btnSubmit.setOnClickListener {
                 binding.apply {
                     val activityName = edActivityName.text.toString()
+                    val bobot = spinnerBobot.selectedItemPosition
                     val activityCategory = spinnerActivity.selectedItemPosition
-                    val startHour = edStartHour.text.toString().toIntOrNull()
-                    val endHour = edEndHour.text.toString().toIntOrNull()
+                    val startHour = edStartHour.text.toString().toInt()
+                    val endHour = edEndHour.text.toString().toInt()
                     val interest = spinnerInterest.selectedItemPosition
 
                     if (activityName.isEmpty() || startHour == null || endHour == null) {
                         Toast.makeText(this@AddActivity, "Data harus diisi dengan lengkap", Toast.LENGTH_SHORT).show()
                     } else {
-                        addViewModel.addHabit(activityName, activityCategory, startHour, endHour, interest)
+                        addViewModel.addHabit(activityName, bobot,  activityCategory, startHour, endHour, interest)
                         finish()
                     }
+                    predict(bobot, activityCategory, startHour, endHour, interest)
                 }
+
             }
         }
 }
+
+    private fun predict(Bobot: Int,
+                        Activity: Int,
+                        Start_Time: Int,
+                        End_Time: Int,
+                        Interest: Int) {
+        addViewModel.postPredict(Bobot, Activity, Start_Time, End_Time, Interest).observe(this) { result ->
+            when (result) {
+                is Result.Loading -> {
+//                    showLoading(true)
+                }
+
+                is Result.Success -> {
+//                    showLoading(false)
+                    }
+
+                is Result.Error -> {
+//                    showLoading(false)
+                }
+            }
+        }
+    }
 
     class MinMaxEditTextInputFilter(private val mMin: Int, private val mMax: Int) : InputFilter {
         override fun filter(
@@ -136,6 +166,33 @@ class AddActivity : AppCompatActivity() {
             ) {
                 val selectedDayValue = dayValues[position]
                 Log.d("interest", selectedDayValue.toString())
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>) {
+            }
+        }
+    }
+
+    private fun dropdownBobot() {
+        val spinnerBobot = binding.spinnerBobot
+
+        val bobot = resources.getStringArray(R.array.bobot_array)
+        val bobotValues = arrayOf(1,2,3)
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bobot)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        spinnerBobot.adapter = adapter
+
+        spinnerBobot.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parentView: AdapterView<*>,
+                selectedItemView: android.view.View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedBobotValue = bobotValues[position]
+                Log.d("bobot", selectedBobotValue.toString())
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {

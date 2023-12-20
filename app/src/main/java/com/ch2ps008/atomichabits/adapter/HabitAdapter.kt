@@ -63,7 +63,7 @@ class HabitAdapter(private val habit : List<Habit>) :
         fun bind(habit: Habit) {
             getHabit = habit
             binding.apply {
-                tvYourActivity.text = habit.activityName
+                tvYourActivity.text = habit.activityName.toString()
                 val startTime = formatHour(habit.startHour)
                 val endTime = formatHour(habit.endHour)
                 tvTime.text = String.format("%s-%s", startTime, endTime)

@@ -22,9 +22,20 @@ class ListViewModel(private val repository: UserRepository) : ViewModel() {
         }
     }
 
+    fun deletePredict(predict: Predict) {
+        viewModelScope.launch {
+            repository.deletePredict(predict)
+        }
+    }
+
     fun undoHabit(habit: Habit) {
         viewModelScope.launch {
             repository.undoHabit(habit)
+        }
+    }
+    fun undoPredict(predict: Predict) {
+        viewModelScope.launch {
+            repository.undoPredict(predict)
         }
     }
 

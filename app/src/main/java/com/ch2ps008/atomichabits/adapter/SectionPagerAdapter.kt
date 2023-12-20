@@ -11,7 +11,7 @@ class SectionsPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(ac
 
     override fun createFragment(position: Int): Fragment {
         val fragment = HabitFragment()
-        fragment.arguments   = Bundle().apply {
+        fragment.arguments = Bundle().apply {
             putInt(HabitFragment.ARG_POSITION, position + 1)
             putString(HabitFragment.ARG_HABIT, habit)
         }
