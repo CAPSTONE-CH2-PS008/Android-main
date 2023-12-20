@@ -3,6 +3,7 @@ package com.ch2ps008.atomichabits.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import androidx.lifecycle.map
 import com.ch2ps008.atomichabits.BuildConfig.BASE_URL2
 import com.ch2ps008.atomichabits.response.ErrorResponse
 import com.ch2ps008.atomichabits.response.LoginResponse
@@ -25,6 +26,7 @@ import com.ch2ps008.atomichabits.source.TipsAndTrick
 import com.ch2ps008.atomichabits.source.TipsAndTrickData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import java.util.Calendar
 
 class UserRepository private constructor(
     private val userPreference: UserPreference,
@@ -70,6 +72,17 @@ class UserRepository private constructor(
                 emit(Result.Error(e.toString()))
             }
         }
+
+    fun getNearestHabit(): LiveData<Habit?> {
+        val currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+        return habitDao.getHabitsSortedByTime().map { habits ->
+            habits.minByOrNull { habit ->
+                val diffStart = if (habit.startHour >= currentHour) habit.startHour - currentHour else 24 + habit.startHour - currentHour
+                val diffEnd = if (habit.endHour >= currentHour) habit.endHour - currentHour else 24 + habit.endHour - currentHour
+                kotlin.math.min(diffStart, diffEnd)
+            }
+        }
+    }
 
     fun predict(
         Bobot: Int,

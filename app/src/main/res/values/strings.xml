@@ -55,6 +55,7 @@
     <string name="tips_and_trick">Tips and Trick</string>
     <string name="your_nearest_activity">Your Nearest Activity</string>
     <string name="token_saved">uid saved</string>
+    <string name="no_nearest_activity">No Nearest Activity</string>
 
     <string name="are_you_sure_want_to_logout">Are you sure want to logout?</string>
     <string name="confirmation">Confirmation</string>
