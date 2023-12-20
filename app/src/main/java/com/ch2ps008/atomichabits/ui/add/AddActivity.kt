@@ -9,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import com.ch2ps008.atomichabits.R
@@ -42,12 +43,16 @@ class AddActivity : AppCompatActivity() {
                 binding.apply {
                     val activityName = edActivityName.text.toString()
                     val activityCategory = spinnerActivity.selectedItemPosition
-                    val startHour = edStartHour.text.toString().toInt()
-                    val endHour = edEndHour.text.toString().toInt()
+                    val startHour = edStartHour.text.toString().toIntOrNull()
+                    val endHour = edEndHour.text.toString().toIntOrNull()
                     val interest = spinnerInterest.selectedItemPosition
 
-                    addViewModel.addHabit(activityName, activityCategory, startHour, endHour, interest)
-                    finish()
+                    if (activityName.isEmpty() || startHour == null || endHour == null) {
+                        Toast.makeText(this@AddActivity, "Data harus diisi dengan lengkap", Toast.LENGTH_SHORT).show()
+                    } else {
+                        addViewModel.addHabit(activityName, activityCategory, startHour, endHour, interest)
+                        finish()
+                    }
                 }
             }
         }

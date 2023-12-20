@@ -1,11 +1,13 @@
 package com.ch2ps008.atomichabits.ui.list
 
+import android.app.ProgressDialog.show
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
+import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -19,6 +21,7 @@ import com.ch2ps008.atomichabits.databinding.FragmentListBinding
 import com.ch2ps008.atomichabits.db.Habit
 import com.ch2ps008.atomichabits.ui.main.MainActivity
 import com.ch2ps008.atomichabits.util.ViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -103,8 +106,19 @@ class ListFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val habit = (viewHolder as HabitAdapter.ViewHolder).getHabit
+                val position = viewHolder.adapterPosition
+                val habit = adapter.getHabitAt(position)
+
                 mainViewModel.deleteTask(habit)
+
+                view?.let {
+                    Snackbar.make(it, "Habit berhasil dihapus", Snackbar.LENGTH_LONG).apply {
+                        setAction("Undo") {
+                            mainViewModel.undoHabit(habit)
+                        }
+                        show()
+                    }
+                }
             }
         })
         itemTouchHelper.attachToRecyclerView(recycler)

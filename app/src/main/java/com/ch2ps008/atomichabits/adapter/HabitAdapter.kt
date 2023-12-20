@@ -32,6 +32,10 @@ class HabitAdapter(private val onItemClick: (Habit) -> Unit) :
 
     override fun getItemCount(): Int = habits.size
 
+    fun getHabitAt(position: Int): Habit {
+        return habits[position]
+    }
+
     fun submitList(newHabits: List<Habit>) {
         val diffResult = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
             override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

@@ -18,4 +18,11 @@ class ListViewModel(private val repository: UserRepository) : ViewModel() {
             repository.deleteHabit(habit)
         }
     }
+
+    fun undoHabit(habit: Habit) {
+        viewModelScope.launch {
+            repository.undoHabit(habit)
+        }
+    }
+
 }

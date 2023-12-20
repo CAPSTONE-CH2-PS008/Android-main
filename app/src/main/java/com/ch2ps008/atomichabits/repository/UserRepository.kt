@@ -102,6 +102,10 @@ class UserRepository private constructor(
         habitDao.insertHabit(newHabit)
     }
 
+    suspend fun undoHabit(habit: Habit) {
+        habitDao.insertHabit(habit)
+    }
+
     suspend fun deleteDB() {
         habitDao.deleteDB()
     }
