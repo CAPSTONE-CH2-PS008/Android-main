@@ -16,16 +16,9 @@ class ListViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun getPredict() = repository.getPredict()
 
-    fun deleteTask(habit: Habit) {
+    fun deleteHabit(habit: Habit) {
         viewModelScope.launch {
             repository.deleteHabit(habit)
-        }
-    }
-
-
-    fun undoHabit(habit: Habit) {
-        viewModelScope.launch {
-            repository.undoHabit(habit)
         }
     }
 
@@ -34,11 +27,4 @@ class ListViewModel(private val repository: UserRepository) : ViewModel() {
             repository.deletePredict(predict)
         }
     }
-
-    fun undoPredict(predict: Predict) {
-        viewModelScope.launch {
-            repository.undoPredict(predict)
-        }
-    }
-
 }

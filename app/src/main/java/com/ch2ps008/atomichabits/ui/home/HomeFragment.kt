@@ -57,31 +57,32 @@ class HomeFragment : Fragment() {
         binding.rvActivity.layoutManager = layoutManager
 
         setupAction()
+        setupRV()
     }
 
     private fun setupAction(){
         mainViewModel.getNearestHabit().observe(viewLifecycleOwner) { habit ->
             if (habit != null) {
-                // Update UI dengan data habit
                 binding.tvNearestActivity.text = habit.activityName
-
-                // Ambil array kategori dari resources
                 val activityCategories = resources.getStringArray(R.array.activity_array)
-                // Gunakan indeks habit.activityCategory untuk mendapatkan string kategori
                 binding.tvCategory.text = activityCategories[habit.activityCategory]
 
                 binding.tvDate.text = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(habit.creationDate)
 
-                // Format startHour dan endHour ke format yang diinginkan
                 val formattedStartHour = String.format("%02d.00", habit.startHour)
                 val formattedEndHour = String.format("%02d.00", habit.endHour)
-                binding.tvTime.text = "$formattedStartHour - $formattedEndHour"
+                binding.tvTime.text =
+                    getString(R.string.formathour, formattedStartHour, formattedEndHour)
 
-                // Anda mungkin perlu mengubah logo aktivitas berdasarkan kategori aktivitas
             } else {
-                // Handle kasus ketika tidak ada habit terdekat
                 binding.tvNearestActivity.text = getString(R.string.no_nearest_activity)
             }
+        }
+    }
+
+    private fun setupRV() {
+        mainViewModel.getHabit().observe(viewLifecycleOwner) { habits ->
+            adapter.submitList(habits)
         }
     }
 

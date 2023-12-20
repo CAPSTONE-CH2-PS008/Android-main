@@ -45,11 +45,13 @@ class HabitFragment : Fragment() {
                 1 -> {
                     listViewModel.getHabit().observe(viewLifecycleOwner){
                         setData(it)
+                        habitAction()
                     }
                 }
                 2 -> {
                     listViewModel.getPredict().observe(viewLifecycleOwner){
                         setPredict(it)
+                        predictAction()
                     }
                 }
             }
@@ -74,7 +76,6 @@ class HabitFragment : Fragment() {
 
         recycler.adapter = adapter
         adapter.submitList(habit)
-        initAction(adapter)
     }
     private fun setPredict(habit: List<Predict>) {
         recycler = binding.rvHabit
@@ -85,11 +86,17 @@ class HabitFragment : Fragment() {
 
         recycler.adapter = adapter
         adapter.submitList(habit)
-        initAction(adapter)
     }
 
-    private fun initAction(adapter: HabitAdapter) {
-        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+    private fun habitAction() {
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
+            override fun getMovementFlags(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder
+            ): Int {
+                return makeMovementFlags(0, ItemTouchHelper.RIGHT)
+            }
+
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -99,30 +106,22 @@ class HabitFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-
-                // Memeriksa apakah posisi valid sebelum mencoba mengakses elemen di daftar
-                if (position >= 0 && position < adapter.itemCount) {
-                    val habit = adapter.getHabitAt(position)
-
-                    listViewModel.deleteTask(habit)
-
-                    view?.let {
-                        Snackbar.make(it, "Habit berhasil dihapus", Snackbar.LENGTH_LONG).apply {
-                            setAction("Undo") {
-                                listViewModel.undoHabit(habit)
-                            }
-                            show()
-                        }
-                    }
-                }
+                val habit = (viewHolder as HabitAdapter.ViewHolder).getHabit
+                listViewModel.deleteHabit(habit)
             }
         })
         itemTouchHelper.attachToRecyclerView(recycler)
     }
 
-    private fun initAction(adapter: PredictAdapter) {
-        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+    private fun predictAction() {
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
+            override fun getMovementFlags(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder
+            ): Int {
+                return makeMovementFlags(0, ItemTouchHelper.RIGHT)
+            }
+
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -132,19 +131,8 @@ class HabitFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                val predict = adapter.getPredictAt(position)
-
-                listViewModel.deletePredict(predict)
-
-                view?.let {
-                    Snackbar.make(it, "Predict berhasil dihapus", Snackbar.LENGTH_LONG).apply {
-                        setAction("Undo") {
-                            listViewModel.undoPredict(predict)
-                        }
-                        show()
-                    }
-                }
+                val habit = (viewHolder as PredictAdapter.ViewHolder).getHabit
+                listViewModel.deletePredict(habit)
             }
         })
         itemTouchHelper.attachToRecyclerView(recycler)

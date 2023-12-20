@@ -65,6 +65,7 @@
     <string name="source">Source: %1$s:</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
+    <string name="formathour">%1$s - %2$s</string>
 
     <string-array name="days_array">
         <item>Monday</item>

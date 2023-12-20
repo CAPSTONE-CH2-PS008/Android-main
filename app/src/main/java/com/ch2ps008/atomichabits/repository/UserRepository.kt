@@ -157,10 +157,6 @@ class UserRepository private constructor(
         predictDao.insertPredict(predictResult)
     }
 
-    suspend fun undoHabit(habit: Habit) {
-        habitDao.insertHabit(habit)
-    }
-
     suspend fun deleteDB() {
         habitDao.deleteDB()
     }
@@ -171,10 +167,6 @@ class UserRepository private constructor(
 
     suspend fun deletePredict(predict: Predict) {
         predictDao.deletePredict(predict)
-    }
-
-    suspend fun undoPredict(predict: Predict) {
-        predictDao.insertPredict(predict)
     }
 
     companion object {
