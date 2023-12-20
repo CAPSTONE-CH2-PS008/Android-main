@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagedList
 import com.ch2ps008.atomichabits.db.Habit
+import com.ch2ps008.atomichabits.db.Predict
 import com.ch2ps008.atomichabits.repository.UserRepository
 import kotlinx.coroutines.launch
 
@@ -21,9 +22,20 @@ class ListViewModel(private val repository: UserRepository) : ViewModel() {
         }
     }
 
+    fun deletePredict(predict: Predict) {
+        viewModelScope.launch {
+            repository.deletePredict(predict)
+        }
+    }
+
     fun undoHabit(habit: Habit) {
         viewModelScope.launch {
             repository.undoHabit(habit)
+        }
+    }
+    fun undoPredict(predict: Predict) {
+        viewModelScope.launch {
+            repository.undoPredict(predict)
         }
     }
 

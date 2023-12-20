@@ -19,4 +19,5 @@ class AddViewModel(private val repository: UserRepository): ViewModel() {
         repository.insertHabit(activityName, activityCategory, startHour, endHour, interest, creationDate)
     }
 
+
 }

@@ -33,7 +33,7 @@ class PredictAdapter(private val predict: List<Predict>) :
 
     override fun getItemCount(): Int = habits.size
 
-    fun getHabitAt(position: Int): Predict {
+    fun getPredictAt(position: Int): Predict {
         return habits[position]
     }
 

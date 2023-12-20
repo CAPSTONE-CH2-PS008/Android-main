@@ -111,6 +111,11 @@ class UserRepository private constructor(
         habitDao.insertHabit(habit)
     }
 
+
+    suspend fun undoPredict(predict: Predict) {
+        predictDao.insertPredict(predict)
+    }
+
     suspend fun deleteDB() {
         habitDao.deleteDB()
     }
@@ -118,6 +123,11 @@ class UserRepository private constructor(
     suspend fun deleteHabit(habit: Habit) {
         habitDao.deleteHabit(habit)
     }
+
+    suspend fun deletePredict(predict: Predict) {
+        predictDao.deletePredict(predict)
+    }
+
 
     companion object {
         private const val TAG = "UserRepository"
