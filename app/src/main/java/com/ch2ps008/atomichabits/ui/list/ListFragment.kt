@@ -63,18 +63,18 @@ class ListFragment : Fragment() {
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
 
-
-        adapter = HabitAdapter {
-
-        }
-        binding.rvHabit.adapter = adapter
-
-        val layoutManager = LinearLayoutManager(requireActivity())
-        recycler = binding.rvHabit
-        recycler.layoutManager = layoutManager
-
-        initAction()
-        setupAction()
+//
+//        adapter = HabitAdapter {
+//
+//        }
+//        binding.rvHabit.adapter = adapter
+//
+//        val layoutManager = LinearLayoutManager(requireActivity())
+//        recycler = binding.rvHabit
+//        recycler.layoutManager = layoutManager
+//
+//        initAction()
+//        setupAction()
     }
 
     private fun setupAction() {

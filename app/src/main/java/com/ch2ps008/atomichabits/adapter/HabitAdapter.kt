@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class HabitAdapter(private val onItemClick: (Habit) -> Unit) :
+class HabitAdapter(private val habit : List<Habit>) :
     RecyclerView.Adapter<HabitAdapter.ViewHolder>() {
 
     private var habits: List<Habit> = listOf()
@@ -22,7 +22,7 @@ class HabitAdapter(private val onItemClick: (Habit) -> Unit) :
             parent,
             false
         )
-        return ViewHolder(binding, onItemClick)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -55,7 +55,7 @@ class HabitAdapter(private val onItemClick: (Habit) -> Unit) :
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class ViewHolder(private val binding: HabitItemBinding, private val onItemClick: (Habit) -> Unit) :
+    class ViewHolder(private val binding: HabitItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         lateinit var getHabit: Habit
@@ -72,7 +72,7 @@ class HabitAdapter(private val onItemClick: (Habit) -> Unit) :
                 val creationDate = sdf.format(Date(habit.creationDate))
                 tvDate.text = creationDate
 
-                itemView.setOnClickListener { onItemClick(habit) }
+                itemView.setOnClickListener {  }
             }
         }
     }

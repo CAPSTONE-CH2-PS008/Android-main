@@ -65,19 +65,4 @@ class HomeAdapter(private val onItemClick: (Habit) -> Unit) :
             }
         }
     }
-
-    companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Habit>() {
-            override fun areItemsTheSame(oldItem: Habit, newItem: Habit): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(
-                oldItem: Habit,
-                newItem: Habit
-            ): Boolean {
-                return oldItem == newItem
-            }
-        }
-    }
 }
