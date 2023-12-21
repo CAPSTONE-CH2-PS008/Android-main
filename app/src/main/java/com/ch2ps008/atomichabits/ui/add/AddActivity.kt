@@ -41,10 +41,10 @@ class AddActivity : AppCompatActivity() {
             edStartHour.filters = arrayOf(MinMaxEditTextInputFilter(0, 23))
             edEndHour.filters = arrayOf(MinMaxEditTextInputFilter(0, 23))
             btnSubmit.setOnClickListener {
-                binding.apply {
+                apply {
                     val activityName = edActivityName.text.toString()
-                    val bobot = spinnerBobot.selectedItemPosition
-                    val activityCategory = spinnerActivity.selectedItemPosition
+                    val bobot = spinnerBobot.selectedItemPosition+1
+                    val activityCategory = spinnerActivity.selectedItemPosition+1
                     val startHour = edStartHour.text.toString().toIntOrNull()
                     val endHour = edEndHour.text.toString().toIntOrNull()
                     val interest = spinnerInterest.selectedItemPosition
@@ -92,7 +92,7 @@ class AddActivity : AppCompatActivity() {
 
                     is Result.Success -> {
                         showLoading(false)
-                        saveResult(Activity_Name, result.data.result, Creation_Date, Start_Time, End_Time)
+                        saveResult(Activity_Name, result.data.result, Creation_Date, result.data.startTime, result.data.endTime, )
                         finish()
                     }
 
@@ -225,8 +225,8 @@ class AddActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveResult(Activity_Name: String, result: Int, Creation_Date: Long, Start_Time: Int, End_Time: Int){
-        addViewModel.saveResult(Activity_Name,result,Creation_Date, Start_Time, End_Time)
+    private fun saveResult(Activity_Name: String, result: Int,  Creation_Date: Long, Start_Time: Int, End_Time: Int){
+        addViewModel.saveResult(Activity_Name, result,Creation_Date, Start_Time,End_Time  )
     }
 
     private fun updateCustomActionBarTitle(title: String) {

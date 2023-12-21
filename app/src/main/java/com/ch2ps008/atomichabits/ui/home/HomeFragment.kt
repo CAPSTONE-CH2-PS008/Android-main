@@ -61,7 +61,9 @@ class HomeFragment : Fragment() {
             if (habit != null) {
                 binding.tvNearestActivity.text = habit.activityName
                 val activityCategories = resources.getStringArray(R.array.activity_array)
-                binding.tvCategory.text = activityCategories[habit.activityCategory]
+                val adjustedCategoryIndex = habit.activityCategory - 1
+                val selectedCategory = activityCategories.getOrNull(adjustedCategoryIndex)
+                binding.tvCategory.text = selectedCategory
 
                 binding.tvDate.text = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(habit.creationDate)
 
