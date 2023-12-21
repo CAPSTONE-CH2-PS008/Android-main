@@ -92,7 +92,7 @@ class AddActivity : AppCompatActivity() {
 
                     is Result.Success -> {
                         showLoading(false)
-                        saveResult(Activity_Name, result.data.result, Creation_Date)
+                        saveResult(Activity_Name, result.data.result, Creation_Date, Start_Time, End_Time)
                         finish()
                     }
 
@@ -225,8 +225,8 @@ class AddActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveResult(Activity_Name: String, result: Int, Creation_Date: Long){
-        addViewModel.saveResult(Activity_Name,result,Creation_Date)
+    private fun saveResult(Activity_Name: String, result: Int, Creation_Date: Long, Start_Time: Int, End_Time: Int){
+        addViewModel.saveResult(Activity_Name,result,Creation_Date, Start_Time, End_Time)
     }
 
     private fun updateCustomActionBarTitle(title: String) {

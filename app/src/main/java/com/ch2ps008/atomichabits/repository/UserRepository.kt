@@ -152,11 +152,13 @@ class UserRepository private constructor(
         habitDao.insertHabit(newHabit)
     }
 
-    suspend fun saveResult(activityName: String, result: Int, creationDate: Long){
+    suspend fun saveResult(activityName: String, result: Int, creationDate: Long, Start_Time: Int, End_Time: Int){
         val predictResult = Predict(
             activityName = activityName,
             result = result,
-            creationDate = creationDate
+            creationDate = creationDate,
+            startHour = Start_Time,
+            endHour = End_Time
         )
         predictDao.insertPredict(predictResult)
     }

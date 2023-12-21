@@ -18,4 +18,8 @@ data class Predict (
     val result: Int,
     @ColumnInfo(name = "creationDate")
     val creationDate: Long,
+    @ColumnInfo(name = "startHour")
+    val startHour: Int,
+    @ColumnInfo(name = "endHour")
+    val endHour: Int,
 ): Parcelable

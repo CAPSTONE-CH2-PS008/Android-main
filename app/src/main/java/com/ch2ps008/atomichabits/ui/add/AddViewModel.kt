@@ -41,8 +41,10 @@ class AddViewModel(private val repository: UserRepository) : ViewModel() {
     fun saveResult(
         Activity_Name: String,
         result: Int,
-        Creation_Date: Long
+        Creation_Date: Long,
+        Start_Time: Int,
+        End_Time: Int,
     ) = viewModelScope.launch {
-        repository.saveResult(Activity_Name, result, Creation_Date)
+        repository.saveResult(Activity_Name, result, Creation_Date, Start_Time, End_Time)
     }
 }

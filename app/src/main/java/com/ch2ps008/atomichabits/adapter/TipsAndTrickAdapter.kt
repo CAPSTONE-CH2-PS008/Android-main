@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.ch2ps008.atomichabits.databinding.TipsItemBinding
 import com.ch2ps008.atomichabits.source.TipsAndTrick
 import com.ch2ps008.atomichabits.ui.tipsandtrick.DetailTipsActivity
+import com.ch2ps008.atomichabits.util.loadImage
 
 class TipsAndTrickAdapter :
     PagingDataAdapter<TipsAndTrick, TipsAndTrickAdapter.ViewHolder>(DIFF_CALLBACK) {
@@ -33,10 +34,7 @@ class TipsAndTrickAdapter :
         fun bind(tips: TipsAndTrick) {
             binding.apply {
                 tvYourActivity.text = tips.title
-                Glide.with(binding.root.context)
-                    .load(tips.photoUrl)
-                    .centerCrop()
-                    .into(ivTips)
+                loadImage(root.context, tips.photoUrl, ivTips)
                 root.setOnClickListener {
                     val detailIntent = Intent(binding.root.context, DetailTipsActivity::class.java)
                     detailIntent.putExtra(DetailTipsActivity.DETAIL_TIPS, tips)

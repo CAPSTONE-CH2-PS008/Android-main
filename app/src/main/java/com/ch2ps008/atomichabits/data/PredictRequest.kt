@@ -7,5 +7,5 @@ data class PredictRequest (
     val Start_Time: Int,
     val End_Time: Int,
     val Interest: Int,
-    val Creation_Date: Long
+    val Creation_Date: Long,
 )

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ch2ps008.atomichabits.databinding.PredictItemBinding
 import com.ch2ps008.atomichabits.db.Predict
 import com.ch2ps008.atomichabits.db.PredictDao
+import com.ch2ps008.atomichabits.util.formatHour
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -76,6 +77,9 @@ class PredictAdapter (private val predictDao: PredictDao) :
                 val sdf = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
                 val creationDate = sdf.format(Date(predict.creationDate))
                 tvDate.text = creationDate
+                val startTime = formatHour(predict.startHour)
+                val endTime = formatHour(predict.endHour)
+                tvTime.text = String.format("%s-%s", startTime, endTime)
             }
         }
 
