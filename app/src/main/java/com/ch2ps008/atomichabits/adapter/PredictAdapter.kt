@@ -3,6 +3,7 @@ package com.ch2ps008.atomichabits.adapter
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ch2ps008.atomichabits.databinding.PredictItemBinding
@@ -64,15 +65,31 @@ class PredictAdapter (private val habitDao: HabitDao, private val predictDao: Pr
 
         init {
             binding.btnDelete.setOnClickListener {
+                showDeleteConfirmationDialog()
+            }
+        }
+
+        private fun showDeleteConfirmationDialog() {
+            val builder = AlertDialog.Builder(binding.root.context)
+            builder.setTitle("Confirmation")
+            builder.setMessage("Do you want to delete this activity?")
+
+            builder.setPositiveButton("Yes") { _, _ ->
                 CoroutineScope(Dispatchers.Main).launch {
-                    val habitActivityName = getPredict.activityName
-                    val habitDelete = habitDao.getHabitsByActivityName(habitActivityName)
-                    habitDelete.forEach { habit ->
+                    val predictActivityName = getPredict.activityName
+                    val habit = habitDao.getHabitsByActivityName(predictActivityName)
+                    habit.forEach { habit ->
                         habitDao.deleteHabit(habit)
                     }
                     predictDao.deletePredict(getPredict)
                 }
             }
+
+            builder.setNegativeButton("No") { _, _ ->
+            }
+
+            val dialog = builder.create()
+            dialog.show()
         }
         
         fun bind(predict: Predict) {
