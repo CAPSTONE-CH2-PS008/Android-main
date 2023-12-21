@@ -67,7 +67,7 @@ class PasswordEditText : AppCompatEditText {
         val passwordLayout = textInputLayout()
         if (isError) {
             passwordLayout?.isErrorEnabled = true
-            passwordLayout?.error = context.getString(R.string.wrong_email_format)
+            passwordLayout?.error = context.getString(R.string.password_less)
             val layoutParams = passwordLayout?.layoutParams
             layoutParams?.height = ViewGroup.LayoutParams.WRAP_CONTENT
             passwordLayout?.requestLayout()
