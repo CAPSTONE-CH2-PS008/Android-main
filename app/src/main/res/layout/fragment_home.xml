@@ -18,6 +18,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:textSize="18sp"
+            android:fontFamily="@font/sarala_regular"
             android:text="@string/your_nearest_activity"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,12 +37,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             android:contentDescription="@string/home_cardview" />
 
+
         <TextView
             android:id="@+id/tvNearestActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/nearest_activity"
+            android:fontFamily="@font/notosans_regular"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -49,23 +52,13 @@
             app:layout_constraintStart_toStartOf="@+id/cardview"
             app:layout_constraintTop_toTopOf="@+id/cardview" />
 
-        <ImageView
-            android:id="@+id/activityLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/sport_logo_large"
-            app:layout_constraintEnd_toEndOf="@+id/cardview"
-            app:layout_constraintTop_toBottomOf="@+id/tvNearestActivity"
-            android:contentDescription="@string/activity_category" />
-
         <TextView
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/notosans_regular"
             android:text="@string/date"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/cardview"
@@ -78,6 +71,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="@string/activity_category"
+            android:fontFamily="@font/notosans_regular"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/cardview"
@@ -87,13 +81,14 @@
             android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="36dp"
             android:text="@string/time"
+            android:fontFamily="@font/notosans_regular"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardview"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityLogo" />
+            app:layout_constraintTop_toTopOf="@+id/cardview" />
 
         <TextView
             android:id="@+id/tvYourActivity"
@@ -103,6 +98,7 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/sarala_regular"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardview" />

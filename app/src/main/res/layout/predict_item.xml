@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:text="@string/your_activity"
             android:textSize="14sp"
+            android:fontFamily="@font/notosans_regular"
             android:layout_marginStart="8dp"
             android:textStyle="bold"
             card_view:layout_constraintStart_toStartOf="parent"
@@ -46,6 +47,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
             android:text="@string/date"
+            android:fontFamily="@font/notosans_regular"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/tvYourActivity" />
 
@@ -54,6 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/time"
+            android:fontFamily="@font/notosans_regular"
             android:layout_marginEnd="16dp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toStartOf="@+id/btnDelete"

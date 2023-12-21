@@ -8,7 +8,7 @@ import com.ch2ps008.atomichabits.databinding.HabitCardviewBinding
 import com.ch2ps008.atomichabits.db.Habit
 import kotlin.math.abs
 
-class HomeAdapter(private val onItemClick: (Habit) -> Unit) :
+class HomeAdapter :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     private var habits: List<Habit> = listOf()
@@ -19,7 +19,7 @@ class HomeAdapter(private val onItemClick: (Habit) -> Unit) :
             parent,
             false
         )
-        return ViewHolder(binding, onItemClick)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -48,7 +48,7 @@ class HomeAdapter(private val onItemClick: (Habit) -> Unit) :
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class ViewHolder(private val binding: HabitCardviewBinding, private val onItemClick: (Habit) -> Unit) :
+    class ViewHolder(private val binding: HabitCardviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(habit: Habit) {
@@ -60,7 +60,6 @@ class HomeAdapter(private val onItemClick: (Habit) -> Unit) :
                 val formattedDuration = "$duration"
                 tvHour.text = formattedDuration
 
-                itemView.setOnClickListener { onItemClick(habit) }
             }
         }
     }
