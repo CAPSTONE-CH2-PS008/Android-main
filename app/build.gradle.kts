@@ -25,9 +25,9 @@ android {
         val localProperties = Properties()
         localProperties.load(FileInputStream(localPropertiesFile))
 
-        // Set the base URL in buildConfigField
         buildConfigField("String", "BASE_URL", "\"${localProperties.getProperty("BASE_URL")}\"")
         buildConfigField("String", "BASE_URL2", "\"${localProperties.getProperty("BASE_URL2")}\"")
+        signingConfig = signingConfigs.getByName("debug")
     }
 
     buildTypes {
