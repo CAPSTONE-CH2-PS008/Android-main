@@ -11,30 +11,17 @@
         android:layout_height="wrap_content"
         tools:context=".ui.add.AddActivity">
 
-        <TextView
-            android:id="@+id/tvAddActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/add_activity"
-            android:textColor="@color/light_purple"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvInputActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="@string/input_your_activity"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAddActivity" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ed_activityNameLayout"
@@ -84,9 +71,9 @@
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
-            android:spinnerMode="dialog"
             android:layout_marginEnd="16dp"
-            android:background="@color/white"
+            android:background="@color/light_purple"
+            android:popupBackground="@color/light_purple"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvBobot" />
@@ -98,8 +85,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:spinnerMode="dialog"
-            android:background="@color/white"
+            android:background="@color/light_purple"
+            android:popupBackground="@color/light_purple"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvActivityCategory" />
@@ -122,8 +109,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:background="@color/white"
-            android:spinnerMode="dialog"
+            android:background="@color/light_purple"
+            android:popupBackground="@color/light_purple"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCategory"/>

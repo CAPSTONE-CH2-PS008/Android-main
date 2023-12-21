@@ -85,10 +85,10 @@ class PredictAdapter (private val predictDao: PredictDao) :
 
         private fun getColorForResult(result: Int): Int {
             return when (result) {
-                0 -> Color.RED
-                1 -> Color.parseColor("#FFA500")
-                2 -> Color.parseColor("#00FF00")
-                3 -> Color.GREEN
+                1 -> Color.RED
+                2 -> Color.parseColor("#FFA500")
+                3 -> Color.parseColor("#00FF00")
+                4 -> Color.GREEN
                 else -> Color.WHITE
             }
         }

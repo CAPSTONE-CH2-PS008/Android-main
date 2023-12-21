@@ -165,7 +165,7 @@ class AddActivity : AppCompatActivity() {
         val spinnerInterest = binding.spinnerInterest
 
         val days = resources.getStringArray(R.array.interest_array)
-        val dayValues = arrayOf(-3,-2,-1,0,1,2,3)
+        val dayValues = arrayOf(0,1,2,3,4,5)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, days)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -192,7 +192,7 @@ class AddActivity : AppCompatActivity() {
         val spinnerBobot = binding.spinnerBobot
 
         val bobot = resources.getStringArray(R.array.bobot_array)
-        val bobotValues = arrayOf(1, 2, 3)
+        val bobotValues = arrayOf(1, 2, 3, 4, 5)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bobot)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
