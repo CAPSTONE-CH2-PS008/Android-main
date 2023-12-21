@@ -21,7 +21,7 @@
             android:id="@+id/btnDelete"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:background="@color/dark_purple"
+            android:background="@drawable/custom_btn"
             android:src="@drawable/trash"
             android:contentDescription="@string/delete_button"
             card_view:layout_constraintBottom_toBottomOf="parent"
