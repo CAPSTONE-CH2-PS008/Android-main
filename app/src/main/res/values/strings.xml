@@ -67,6 +67,16 @@
     <string name="email">Email</string>
     <string name="formathour">%1$s - %2$s</string>
     <string name="delete_button">Delete Button</string>
+    <string name="your_status">Your Status</string>
+    <string name="home_cardview">Home Cardview</string>
+    <string name="carousel_image">Carousel Image</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="tips_title">Tips Title</string>
+    <string name="description">Description</string>
+    <string name="submit">Submit</string>
+    <string name="interest">Interest</string>
+    <string name="weight">Weight</string>
+    <string name="add_validation">Data must be filled in</string>
 
     <string-array name="days_array">
         <item>Monday</item>

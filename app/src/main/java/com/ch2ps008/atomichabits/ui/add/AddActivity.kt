@@ -52,7 +52,7 @@ class AddActivity : AppCompatActivity() {
                     if (activityName.isEmpty() || startHour == null || endHour == null) {
                         Toast.makeText(
                             this@AddActivity,
-                            "Data harus diisi dengan lengkap",
+                            getString(R.string.add_validation),
                             Toast.LENGTH_SHORT
                         ).show()
                     } else {
