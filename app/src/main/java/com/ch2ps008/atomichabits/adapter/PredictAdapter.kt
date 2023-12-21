@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ch2ps008.atomichabits.databinding.PredictItemBinding
+import com.ch2ps008.atomichabits.db.HabitDao
 import com.ch2ps008.atomichabits.db.Predict
 import com.ch2ps008.atomichabits.db.PredictDao
 import com.ch2ps008.atomichabits.util.formatHour
@@ -16,7 +17,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class PredictAdapter (private val predictDao: PredictDao) :
+class PredictAdapter (private val habitDao: HabitDao, private val predictDao: PredictDao) :
     RecyclerView.Adapter<PredictAdapter.ViewHolder>() {
 
     private var predict: List<Predict> = listOf()
@@ -27,7 +28,7 @@ class PredictAdapter (private val predictDao: PredictDao) :
             parent,
             false
         )
-        return ViewHolder(binding, predictDao)
+        return ViewHolder(binding, habitDao, predictDao)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -56,7 +57,7 @@ class PredictAdapter (private val predictDao: PredictDao) :
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class ViewHolder(private val binding: PredictItemBinding, private val predictDao: PredictDao) :
+    class ViewHolder(private val binding: PredictItemBinding, private val habitDao: HabitDao, private val predictDao: PredictDao) :
         RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var getPredict: Predict
@@ -64,6 +65,11 @@ class PredictAdapter (private val predictDao: PredictDao) :
         init {
             binding.btnDelete.setOnClickListener {
                 CoroutineScope(Dispatchers.Main).launch {
+                    val habitActivityName = getPredict.activityName
+                    val habitDelete = habitDao.getHabitsByActivityName(habitActivityName)
+                    habitDelete.forEach { habit ->
+                        habitDao.deleteHabit(habit)
+                    }
                     predictDao.deletePredict(getPredict)
                 }
             }

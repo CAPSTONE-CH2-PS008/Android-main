@@ -44,9 +44,7 @@ class HomeFragment : Fragment() {
 
         (requireActivity() as MainActivity).updateCustomActionBarTitle(getString(R.string.title_home))
 
-        adapter = HomeAdapter{
-
-        }
+        adapter = HomeAdapter()
 
         binding.rvActivity.adapter = adapter
         val layoutManager = GridLayoutManager(requireContext(), 2)

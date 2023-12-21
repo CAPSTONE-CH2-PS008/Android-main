@@ -73,7 +73,7 @@ class HabitFragment : Fragment() {
         recycler = binding.rvHabit
         recycler.layoutManager = LinearLayoutManager(requireActivity())
 
-        val adapter = PredictAdapter(listViewModel.getPredictDao())
+        val adapter = PredictAdapter(listViewModel.getHabitDao(), listViewModel.getPredictDao())
         binding.rvHabit.adapter = adapter
 
         recycler.adapter = adapter

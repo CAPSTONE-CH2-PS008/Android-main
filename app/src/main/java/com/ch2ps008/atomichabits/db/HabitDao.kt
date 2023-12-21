@@ -15,6 +15,9 @@ interface HabitDao {
     @Query("SELECT * FROM habits ORDER BY startHour ASC, endHour ASC")
     fun getHabitsSortedByTime(): LiveData<List<Habit>>
 
+    @Query("SELECT * FROM habits WHERE activityName = :activityName")
+    suspend fun getHabitsByActivityName(activityName: String): List<Habit>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertHabit(habit: Habit)
 
