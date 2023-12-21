@@ -36,6 +36,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             android:contentDescription="@string/home_cardview" />
 
+
         <TextView
             android:id="@+id/tvNearestActivity"
             android:layout_width="wrap_content"
@@ -48,17 +49,6 @@
             app:layout_constraintEnd_toEndOf="@+id/cardview"
             app:layout_constraintStart_toStartOf="@+id/cardview"
             app:layout_constraintTop_toTopOf="@+id/cardview" />
-
-        <ImageView
-            android:id="@+id/activityLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/sport_logo_large"
-            app:layout_constraintEnd_toEndOf="@+id/cardview"
-            app:layout_constraintTop_toBottomOf="@+id/tvNearestActivity"
-            android:contentDescription="@string/activity_category" />
 
         <TextView
             android:id="@+id/tvDate"
@@ -87,13 +77,13 @@
             android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="36dp"
             android:text="@string/time"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardview"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityLogo" />
+            app:layout_constraintTop_toTopOf="@+id/cardview" />
 
         <TextView
             android:id="@+id/tvYourActivity"
