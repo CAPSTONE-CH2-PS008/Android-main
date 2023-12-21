@@ -92,12 +92,15 @@ class AddActivity : AppCompatActivity() {
 
                     is Result.Success -> {
                         showLoading(false)
-                        saveResult(Activity_Name, result.data.result, Creation_Date, result.data.startTime, result.data.endTime, )
+                        saveResult(Activity_Name, result.data.result, Creation_Date, result.data.startTime, result.data.endTime)
                         finish()
+                        Toast.makeText(this, getString(R.string.success), Toast.LENGTH_SHORT).show()
                     }
 
                     is Result.Error -> {
                         showLoading(false)
+                        Toast.makeText(this,
+                            getString(R.string.failed_send_to_server), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -137,10 +140,10 @@ class AddActivity : AppCompatActivity() {
     private fun dropdownActivity() {
         val spinnerActivity = binding.spinnerActivity
 
-        val days = resources.getStringArray(R.array.activity_array)
-        val dayValues = arrayOf(1, 2, 3, 4)
+        val activity = resources.getStringArray(R.array.activity_array)
+        val activityValue = arrayOf(1, 2, 3, 4)
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, days)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, activity)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         spinnerActivity.adapter = adapter
@@ -152,8 +155,8 @@ class AddActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                val selectedDayValue = dayValues[position]
-                Log.d("priority", selectedDayValue.toString())
+                val activitySelect = activityValue[position]
+                Log.d("priority", activitySelect.toString())
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {
@@ -164,10 +167,10 @@ class AddActivity : AppCompatActivity() {
     private fun dropdownInterest() {
         val spinnerInterest = binding.spinnerInterest
 
-        val days = resources.getStringArray(R.array.interest_array)
-        val dayValues = arrayOf(0,1,2,3,4,5)
+        val interest = resources.getStringArray(R.array.interest_array)
+        val interestValue = arrayOf(0,1,2,3,4,5)
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, days)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, interest)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         spinnerInterest.adapter = adapter
@@ -179,8 +182,8 @@ class AddActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                val selectedDayValue = dayValues[position]
-                Log.d("interest", selectedDayValue.toString())
+                val interestsValue = interestValue[position]
+                Log.d(getString(R.string.interest), interestsValue.toString())
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {
@@ -207,7 +210,7 @@ class AddActivity : AppCompatActivity() {
                 id: Long
             ) {
                 val selectedBobotValue = bobotValues[position]
-                Log.d("bobot", selectedBobotValue.toString())
+                Log.d(getString(R.string.bobot), selectedBobotValue.toString())
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {

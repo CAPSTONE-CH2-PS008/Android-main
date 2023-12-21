@@ -41,10 +41,6 @@ class LoginActivity : AppCompatActivity() {
                 val password = binding.edPassword.text.toString()
 
                 loginUser(email, password)
-
-//                val intent = Intent(this@LoginActivity, MainActivity::class.java)
-//                startActivity(intent)
-//                finish()
             }
         }
     }
@@ -88,7 +84,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun saveSession(body: Body) {
         loginViewModel.saveSession(UserModel(body.uid, body.displayName, body.email))
-        Log.d("Token disimpan", body.uid)
+        Log.d(getString(R.string.token_disimpan), body.uid)
     }
 
     private fun showLoading(isLoading: Boolean) {

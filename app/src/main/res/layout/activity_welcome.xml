@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosans_regular"
-            android:text="Welcome to the Atomic Habits app, your personal catalyst for transformative change. "
+            android:text="@string/crsl1"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -80,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosans_regular"
-            android:text="Unlock the power of atomic habits – small changes that lead to big outcomes. Whether you're aiming for personal growth, fitness, career success, or overall well-being, this app is your secret weapon."
+            android:text="@string/crsl2"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -89,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosans_regular"
-            android:text="Your habits, your way. Access your progress on-the-go, keeping your goals in sight wherever life takes you. Seamless synchronization across devices ensures you're always in control."
+            android:text="@string/crsl3"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -98,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosans_regular"
-            android:text="Your data is yours alone. We prioritize your privacy and security, ensuring a safe space for your personal development."
+            android:text="@string/crsl4"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </ViewFlipper>

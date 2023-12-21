@@ -77,6 +77,15 @@
     <string name="interest">Interest</string>
     <string name="weight">Weight</string>
     <string name="add_validation">Data must be filled in</string>
+    <string name="token_disimpan">Token disimpan</string>
+    <string name="failed_send_to_server">Failed send to server</string>
+    <string name="success">Success</string>
+    <string name="bobot">bobot</string>
+    <string name="crsl2">Based on James Clears proven Atomic Habits principles, the app fosters sustainable improvement through small, incremental changes.</string>
+    <string name="crsl1">Welcome to the Atomic Habits app, your personal catalyst for transformative change.</string>
+    <string name="crsl3">Personalized habit recommendations: Machine learning suggests achievable habits for individual goals, reducing overwhelm and increasing productivity.</string>
+    <string name="crsl4">Progress Tracking: present user progress data and remind users to consistently perform their habits.</string>
+
 
     <string-array name="days_array">
         <item>Monday</item>
