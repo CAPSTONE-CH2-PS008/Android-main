@@ -22,7 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/activity_name"
-            android:textSize="24sp"
+            android:fontFamily="@font/notosans_regular"
+            android:textSize="20sp"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
@@ -33,6 +34,7 @@
             android:layout_height="wrap_content"
             android:text="@string/time"
             android:textColor="#33691E"
+            android:fontFamily="@font/notosans_regular"
             android:textSize="64sp"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
@@ -42,8 +44,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hours"
+            android:fontFamily="@font/notosans_regular"
             android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textSize="20sp"
             card_view:layout_constraintEnd_toEndOf="@+id/tvHour"
             card_view:layout_constraintStart_toStartOf="@+id/tvHour"
             card_view:layout_constraintTop_toBottomOf="@+id/tvHour" />
