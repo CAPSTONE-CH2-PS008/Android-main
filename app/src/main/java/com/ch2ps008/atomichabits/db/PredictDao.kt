@@ -15,6 +15,9 @@ interface PredictDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPredict(predict: Predict)
 
+    @Query("DELETE FROM predict")
+    suspend fun deleteDB()
+
     @Delete
     suspend fun deletePredict(predict: Predict)
 }

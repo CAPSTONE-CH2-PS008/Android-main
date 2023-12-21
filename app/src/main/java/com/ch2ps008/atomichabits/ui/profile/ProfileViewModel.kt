@@ -24,7 +24,8 @@ class ProfileViewModel (private val userRepository: UserRepository) : ViewModel(
     fun deleteDB(){
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                userRepository.deleteDB()
+                userRepository.deleteDBHabit()
+                userRepository.deleteDBPredict()
             }
         }
     }

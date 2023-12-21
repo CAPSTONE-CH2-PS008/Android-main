@@ -163,9 +163,14 @@ class UserRepository private constructor(
         predictDao.insertPredict(predictResult)
     }
 
-    suspend fun deleteDB() {
+    suspend fun deleteDBHabit() {
         habitDao.deleteDB()
     }
+
+    suspend fun deleteDBPredict() {
+        predictDao.deleteDB()
+    }
+
 
     fun getHabitDao(): HabitDao {
         return habitDao
