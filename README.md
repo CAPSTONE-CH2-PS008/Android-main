@@ -29,6 +29,7 @@ Here is our repository for Bangkit 2023 Capstone project - Mobile Development.
 - Glide
 - AndroidX Paging
 - Room
+- CircleImageView
 
 ## Link Download Application
 Link Download APK Atomic Habit:<br>
