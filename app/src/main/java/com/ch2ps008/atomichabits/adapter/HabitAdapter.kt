@@ -6,12 +6,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ch2ps008.atomichabits.databinding.HabitItemBinding
 import com.ch2ps008.atomichabits.db.Habit
+import com.ch2ps008.atomichabits.db.HabitDao
 import com.ch2ps008.atomichabits.util.formatHour
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class HabitAdapter :
+class HabitAdapter (private val habitDao: HabitDao):
     RecyclerView.Adapter<HabitAdapter.ViewHolder>() {
 
     private var habits: List<Habit> = listOf()
@@ -22,7 +26,7 @@ class HabitAdapter :
             parent,
             false
         )
-        return ViewHolder(binding)
+        return ViewHolder(binding, habitDao)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -31,7 +35,6 @@ class HabitAdapter :
     }
 
     override fun getItemCount(): Int = habits.size
-
 
     fun submitList(newHabits: List<Habit>) {
         val diffResult = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
@@ -52,10 +55,18 @@ class HabitAdapter :
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class ViewHolder(private val binding: HabitItemBinding) :
+    class ViewHolder(private val binding: HabitItemBinding, private val habitDao: HabitDao) :
         RecyclerView.ViewHolder(binding.root) {
 
         lateinit var getHabit: Habit
+
+        init {
+            binding.btnDelete.setOnClickListener {
+                CoroutineScope(Dispatchers.Main).launch {
+                    habitDao.deleteHabit(getHabit)
+                }
+            }
+        }
 
         fun bind(habit: Habit) {
             getHabit = habit

@@ -6,16 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ch2ps008.atomichabits.adapter.HabitAdapter
-import com.ch2ps008.atomichabits.adapter.PredictAdapter
 import com.ch2ps008.atomichabits.databinding.FragmentHabitBinding
 import com.ch2ps008.atomichabits.db.Habit
 import com.ch2ps008.atomichabits.db.Predict
 import com.ch2ps008.atomichabits.ui.list.ListViewModel
 import com.ch2ps008.atomichabits.util.ViewModelFactory
+import com.ch2ps008.atomichabits.adapter.PredictAdapter
 
 class HabitFragment : Fragment() {
 
@@ -40,13 +39,11 @@ class HabitFragment : Fragment() {
                 1 -> {
                     listViewModel.getHabit().observe(viewLifecycleOwner){
                         setData(it)
-                        habitAction()
                     }
                 }
                 2 -> {
                     listViewModel.getPredict().observe(viewLifecycleOwner){
                         setPredict(it)
-                        predictAction()
                     }
                 }
             }
@@ -65,7 +62,7 @@ class HabitFragment : Fragment() {
         recycler = binding.rvHabit
         recycler.layoutManager = LinearLayoutManager(requireActivity())
 
-        val adapter = HabitAdapter()
+        val adapter = HabitAdapter(listViewModel.getHabitDao())
         adapter.submitList(habit)
         binding.rvHabit.adapter = adapter
 
@@ -76,61 +73,11 @@ class HabitFragment : Fragment() {
         recycler = binding.rvHabit
         recycler.layoutManager = LinearLayoutManager(requireActivity())
 
-        val adapter = PredictAdapter()
+        val adapter = PredictAdapter(listViewModel.getPredictDao())
         binding.rvHabit.adapter = adapter
 
         recycler.adapter = adapter
         adapter.submitList(habit)
-    }
-
-    private fun habitAction() {
-        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
-            override fun getMovementFlags(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder
-            ): Int {
-                return makeMovementFlags(0, ItemTouchHelper.RIGHT)
-            }
-
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val habit = (viewHolder as HabitAdapter.ViewHolder).getHabit
-                listViewModel.deleteHabit(habit)
-            }
-        })
-        itemTouchHelper.attachToRecyclerView(recycler)
-    }
-
-    private fun predictAction() {
-        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
-            override fun getMovementFlags(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder
-            ): Int {
-                return makeMovementFlags(0, ItemTouchHelper.RIGHT)
-            }
-
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val habit = (viewHolder as PredictAdapter.ViewHolder).getHabit
-                listViewModel.deletePredict(habit)
-            }
-        })
-        itemTouchHelper.attachToRecyclerView(recycler)
     }
 
     companion object {

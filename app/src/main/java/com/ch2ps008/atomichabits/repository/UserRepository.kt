@@ -161,12 +161,12 @@ class UserRepository private constructor(
         habitDao.deleteDB()
     }
 
-    suspend fun deleteHabit(habit: Habit) {
-        habitDao.deleteHabit(habit)
+    fun getHabitDao(): HabitDao {
+        return habitDao
     }
 
-    suspend fun deletePredict(predict: Predict) {
-        predictDao.deletePredict(predict)
+    fun getPredictDao(): PredictDao {
+        return predictDao
     }
 
     companion object {

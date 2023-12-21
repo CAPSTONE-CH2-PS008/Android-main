@@ -13,15 +13,7 @@ class ListViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun getPredict() = repository.getPredict()
 
-    fun deleteHabit(habit: Habit) {
-        viewModelScope.launch {
-            repository.deleteHabit(habit)
-        }
-    }
+    fun getHabitDao() = repository.getHabitDao()
 
-    fun deletePredict(predict: Predict) {
-        viewModelScope.launch {
-            repository.deletePredict(predict)
-        }
-    }
+    fun getPredictDao() = repository.getPredictDao()
 }
