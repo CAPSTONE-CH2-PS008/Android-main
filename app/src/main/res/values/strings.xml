@@ -85,6 +85,8 @@
     <string name="crsl1">Welcome to the Atomic Habits app, your personal catalyst for transformative change.</string>
     <string name="crsl3">Personalized habit recommendations: Machine learning suggests achievable habits for individual goals, reducing overwhelm and increasing productivity.</string>
     <string name="crsl4">Progress Tracking: present user progress data and remind users to consistently perform their habits.</string>
+    <string name="atomic_habits">Atomic Habits</string>
+    <string name="reality_is_in_your_hands">"Reality is in your hands"</string>
 
 
     <string-array name="days_array">
