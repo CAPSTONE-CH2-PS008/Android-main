@@ -64,7 +64,7 @@ class AddActivity : AppCompatActivity() {
                             endHour,
                             interest
                         )
-                        predict(bobot, activityCategory, startHour, endHour, interest)
+                        predict(activityName, bobot, activityCategory, startHour, endHour, interest)
                     }
                 }
 
@@ -73,13 +73,14 @@ class AddActivity : AppCompatActivity() {
     }
 
     private fun predict(
+        Activity_Name: String,
         Bobot: Int,
         Activity: Int,
         Start_Time: Int,
         End_Time: Int,
         Interest: Int
     ) {
-        addViewModel.postPredict(Bobot, Activity, Start_Time, End_Time, Interest)
+        addViewModel.postPredict(Activity_Name, Bobot, Activity, Start_Time, End_Time, Interest)
             .observe(this) { result ->
                 when (result) {
                     is Result.Loading -> {
@@ -88,7 +89,7 @@ class AddActivity : AppCompatActivity() {
 
                     is Result.Success -> {
                         showLoading(false)
-                        saveResult(result.data.result)
+                        saveResult(Activity_Name, result.data.result)
                         finish()
                     }
 
@@ -221,8 +222,8 @@ class AddActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveResult(result: Int){
-        addViewModel.saveResult(result)
+    private fun saveResult(Activity_Name: String, result: Int){
+        addViewModel.saveResult(Activity_Name,result)
     }
 
     private fun updateCustomActionBarTitle(title: String) {

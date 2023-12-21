@@ -29,16 +29,18 @@ class AddViewModel(private val repository: UserRepository) : ViewModel() {
     }
 
     fun postPredict(
+        Activity_Name: String,
         Bobot: Int,
         Activity: Int,
         Start_Time: Int,
         End_Time: Int,
         Interest: Int
-    ) = repository.predict(Bobot, Activity, Start_Time, End_Time, Interest)
+    ) = repository.predict(Activity_Name, Bobot, Activity, Start_Time, End_Time, Interest)
 
     fun saveResult(
+        Activity_Name: String,
         result: Int
     ) = viewModelScope.launch {
-        repository.saveResult(result)
+        repository.saveResult(Activity_Name, result)
     }
 }

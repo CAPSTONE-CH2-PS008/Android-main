@@ -68,7 +68,7 @@ class PredictAdapter (private val predictDao: PredictDao) :
         fun bind(habit: Predict) {
             getPredict = habit
             binding.apply {
-                tvYourActivity.text = habit.result.toString()
+                tvYourActivity.text = habit.activityName
                 tvYourActivity.setTextColor(getColorForResult(habit.result))
                 itemView.setOnClickListener {  }
             }

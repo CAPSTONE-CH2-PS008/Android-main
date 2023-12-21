@@ -85,6 +85,7 @@ class UserRepository private constructor(
     }
 
     fun predict(
+        Activity_Name: String,
         Bobot: Int,
         Activity: Int,
         Start_Time: Int,
@@ -95,7 +96,7 @@ class UserRepository private constructor(
             emit(Result.Loading)
             try {
                 val loginResponse = apiService.predict(BASE_URL2,
-                    PredictRequest(Bobot, Activity, Start_Time, End_Time, Interest)
+                    PredictRequest(Activity_Name, Bobot, Activity, Start_Time, End_Time, Interest)
                 )
                 emit(Result.Success(loginResponse))
 
@@ -150,8 +151,9 @@ class UserRepository private constructor(
         habitDao.insertHabit(newHabit)
     }
 
-    suspend fun saveResult(result: Int){
+    suspend fun saveResult(activityName: String, result: Int){
         val predictResult = Predict(
+            activityName = activityName,
             result = result
         )
         predictDao.insertPredict(predictResult)

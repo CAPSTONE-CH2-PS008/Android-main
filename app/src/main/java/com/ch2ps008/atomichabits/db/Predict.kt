@@ -9,9 +9,11 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "predict")
 @Parcelize
 data class Predict (
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = "id")
     val id: Int = 0,
+    @ColumnInfo(name = "activityName")
+    val activityName: String,
     @ColumnInfo(name = "result")
     val result: Int
 ): Parcelable
