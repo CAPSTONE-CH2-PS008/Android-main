@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ch2ps008.atomichabits.databinding.HabitItemBinding
 import com.ch2ps008.atomichabits.db.Habit
 import com.ch2ps008.atomichabits.db.HabitDao
+import com.ch2ps008.atomichabits.db.PredictDao
 import com.ch2ps008.atomichabits.util.formatHour
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +16,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class HabitAdapter (private val habitDao: HabitDao):
+class HabitAdapter (private val habitDao: HabitDao, private val predictDao: PredictDao):
     RecyclerView.Adapter<HabitAdapter.ViewHolder>() {
 
     private var habits: List<Habit> = listOf()
@@ -26,7 +27,7 @@ class HabitAdapter (private val habitDao: HabitDao):
             parent,
             false
         )
-        return ViewHolder(binding, habitDao)
+        return ViewHolder(binding, habitDao, predictDao)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -55,7 +56,7 @@ class HabitAdapter (private val habitDao: HabitDao):
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class ViewHolder(private val binding: HabitItemBinding, private val habitDao: HabitDao) :
+    class ViewHolder(private val binding: HabitItemBinding, private val habitDao: HabitDao, private val predictDao: PredictDao) :
         RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var getHabit: Habit
@@ -63,6 +64,11 @@ class HabitAdapter (private val habitDao: HabitDao):
         init {
             binding.btnDelete.setOnClickListener {
                 CoroutineScope(Dispatchers.Main).launch {
+                    val habitActivityName = getHabit.activityName
+                    val predictsToDelete = predictDao.getPredictsByActivityName(habitActivityName)
+                    predictsToDelete.forEach { predict ->
+                        predictDao.deletePredict(predict)
+                    }
                     habitDao.deleteHabit(getHabit)
                 }
             }
