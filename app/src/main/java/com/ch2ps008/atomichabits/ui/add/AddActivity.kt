@@ -48,6 +48,7 @@ class AddActivity : AppCompatActivity() {
                     val startHour = edStartHour.text.toString().toIntOrNull()
                     val endHour = edEndHour.text.toString().toIntOrNull()
                     val interest = spinnerInterest.selectedItemPosition
+                    val creationDate = System.currentTimeMillis()
 
                     if (activityName.isEmpty() || startHour == null || endHour == null) {
                         Toast.makeText(
@@ -62,9 +63,10 @@ class AddActivity : AppCompatActivity() {
                             activityCategory,
                             startHour,
                             endHour,
-                            interest
+                            interest,
+                            creationDate
                         )
-                        predict(activityName, bobot, activityCategory, startHour, endHour, interest)
+                        predict(activityName, bobot, activityCategory, startHour, endHour, interest, creationDate)
                     }
                 }
 
@@ -78,9 +80,10 @@ class AddActivity : AppCompatActivity() {
         Activity: Int,
         Start_Time: Int,
         End_Time: Int,
-        Interest: Int
+        Interest: Int,
+        Creation_Date: Long
     ) {
-        addViewModel.postPredict(Activity_Name, Bobot, Activity, Start_Time, End_Time, Interest)
+        addViewModel.postPredict(Activity_Name, Bobot, Activity, Start_Time, End_Time, Interest, Creation_Date)
             .observe(this) { result ->
                 when (result) {
                     is Result.Loading -> {
@@ -89,7 +92,7 @@ class AddActivity : AppCompatActivity() {
 
                     is Result.Success -> {
                         showLoading(false)
-                        saveResult(Activity_Name, result.data.result)
+                        saveResult(Activity_Name, result.data.result, Creation_Date)
                         finish()
                     }
 
@@ -222,8 +225,8 @@ class AddActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveResult(Activity_Name: String, result: Int){
-        addViewModel.saveResult(Activity_Name,result)
+    private fun saveResult(Activity_Name: String, result: Int, Creation_Date: Long){
+        addViewModel.saveResult(Activity_Name,result,Creation_Date)
     }
 
     private fun updateCustomActionBarTitle(title: String) {

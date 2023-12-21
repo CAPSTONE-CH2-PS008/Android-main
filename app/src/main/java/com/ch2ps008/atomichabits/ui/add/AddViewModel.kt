@@ -14,9 +14,9 @@ class AddViewModel(private val repository: UserRepository) : ViewModel() {
         activityCategory: Int,
         startHour: Int,
         endHour: Int,
-        interest: Int
+        interest: Int,
+        creationDate: Long
     ) = viewModelScope.launch {
-        val creationDate = System.currentTimeMillis()
         repository.insertHabit(
             activityName,
             bobot,
@@ -34,13 +34,15 @@ class AddViewModel(private val repository: UserRepository) : ViewModel() {
         Activity: Int,
         Start_Time: Int,
         End_Time: Int,
-        Interest: Int
-    ) = repository.predict(Activity_Name, Bobot, Activity, Start_Time, End_Time, Interest)
+        Interest: Int,
+        Creation_Date: Long
+    ) = repository.predict(Activity_Name, Bobot, Activity, Start_Time, End_Time, Interest, Creation_Date )
 
     fun saveResult(
         Activity_Name: String,
-        result: Int
+        result: Int,
+        Creation_Date: Long
     ) = viewModelScope.launch {
-        repository.saveResult(Activity_Name, result)
+        repository.saveResult(Activity_Name, result, Creation_Date)
     }
 }

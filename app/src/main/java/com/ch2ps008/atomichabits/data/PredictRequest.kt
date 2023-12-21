@@ -6,5 +6,6 @@ data class PredictRequest (
     val Activity: Int,
     val Start_Time: Int,
     val End_Time: Int,
-    val Interest: Int
+    val Interest: Int,
+    val Creation_Date: Long
 )

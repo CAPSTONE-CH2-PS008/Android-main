@@ -15,5 +15,7 @@ data class Predict (
     @ColumnInfo(name = "activityName")
     val activityName: String,
     @ColumnInfo(name = "result")
-    val result: Int
+    val result: Int,
+    @ColumnInfo(name = "creationDate")
+    val creationDate: Long,
 ): Parcelable

@@ -11,6 +11,9 @@ import com.ch2ps008.atomichabits.db.PredictDao
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class PredictAdapter (private val predictDao: PredictDao) :
     RecyclerView.Adapter<PredictAdapter.ViewHolder>() {
@@ -65,12 +68,14 @@ class PredictAdapter (private val predictDao: PredictDao) :
             }
         }
         
-        fun bind(habit: Predict) {
-            getPredict = habit
+        fun bind(predict: Predict) {
+            getPredict = predict
             binding.apply {
-                tvYourActivity.text = habit.activityName
-                tvYourActivity.setTextColor(getColorForResult(habit.result))
-                itemView.setOnClickListener {  }
+                tvYourActivity.text = predict.activityName
+                tvYourActivity.setTextColor(getColorForResult(predict.result))
+                val sdf = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+                val creationDate = sdf.format(Date(predict.creationDate))
+                tvDate.text = creationDate
             }
         }
 

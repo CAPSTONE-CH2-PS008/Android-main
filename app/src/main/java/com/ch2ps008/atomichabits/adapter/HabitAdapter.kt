@@ -79,8 +79,6 @@ class HabitAdapter (private val habitDao: HabitDao):
                 val sdf = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
                 val creationDate = sdf.format(Date(habit.creationDate))
                 tvDate.text = creationDate
-
-                itemView.setOnClickListener {  }
             }
         }
     }
