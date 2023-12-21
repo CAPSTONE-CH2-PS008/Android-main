@@ -1,7 +1,7 @@
 # Atomic Habit - Mobile Development
 Android Application Atomic Habit
 
-## Bangkit Capstone Project 2022
+## Bangkit Capstone Project 2023
 
 Bangkit Capstone Team ID : CH2 - PS008 <br>
 Here is our repository for Bangkit 2023 Capstone project - Mobile Development.
