@@ -8,7 +8,6 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.ch2ps008.atomichabits.databinding.TipsItemBinding
 import com.ch2ps008.atomichabits.source.TipsAndTrick
 import com.ch2ps008.atomichabits.ui.tipsandtrick.DetailTipsActivity

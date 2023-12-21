@@ -59,7 +59,7 @@ class PredictAdapter (private val predictDao: PredictDao) :
     class ViewHolder(private val binding: PredictItemBinding, private val predictDao: PredictDao) :
         RecyclerView.ViewHolder(binding.root) {
 
-        lateinit var getPredict: Predict
+        private lateinit var getPredict: Predict
 
         init {
             binding.btnDelete.setOnClickListener {

@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.ch2ps008.atomichabits.R
-import com.ch2ps008.atomichabits.databinding.ActivityLoginBinding
 import com.ch2ps008.atomichabits.databinding.ActivityMainBinding
 import com.ch2ps008.atomichabits.ui.add.AddActivity
 import com.ch2ps008.atomichabits.ui.profile.ProfileActivity

@@ -2,7 +2,6 @@ package com.ch2ps008.atomichabits.ui.add
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ch2ps008.atomichabits.db.Habit
 import com.ch2ps008.atomichabits.repository.UserRepository
 import kotlinx.coroutines.launch
 

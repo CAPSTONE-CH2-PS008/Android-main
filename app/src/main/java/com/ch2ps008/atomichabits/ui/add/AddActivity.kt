@@ -148,7 +148,7 @@ class AddActivity : AppCompatActivity() {
         spinnerActivity.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parentView: AdapterView<*>,
-                selectedItemView: android.view.View?,
+                selectedItemView: View?,
                 position: Int,
                 id: Long
             ) {

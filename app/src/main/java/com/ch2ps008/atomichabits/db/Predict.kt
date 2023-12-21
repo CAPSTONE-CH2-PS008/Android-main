@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "predict")
 @Parcelize
 data class Predict (
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     val id: Int = 0,
     @ColumnInfo(name = "activityName")

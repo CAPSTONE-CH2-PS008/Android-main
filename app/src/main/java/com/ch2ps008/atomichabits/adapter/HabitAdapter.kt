@@ -58,7 +58,7 @@ class HabitAdapter (private val habitDao: HabitDao):
     class ViewHolder(private val binding: HabitItemBinding, private val habitDao: HabitDao) :
         RecyclerView.ViewHolder(binding.root) {
 
-        lateinit var getHabit: Habit
+        private lateinit var getHabit: Habit
 
         init {
             binding.btnDelete.setOnClickListener {
@@ -71,7 +71,7 @@ class HabitAdapter (private val habitDao: HabitDao):
         fun bind(habit: Habit) {
             getHabit = habit
             binding.apply {
-                tvYourActivity.text = habit.activityName.toString()
+                tvYourActivity.text = habit.activityName
                 val startTime = formatHour(habit.startHour)
                 val endTime = formatHour(habit.endHour)
                 tvTime.text = String.format("%s-%s", startTime, endTime)
