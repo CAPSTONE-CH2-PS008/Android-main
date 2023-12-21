@@ -1,5 +1,5 @@
 # Atomic Habit - Mobile Development
-Android Application Atomic Habit
+Android Application Atomic Habits
 
 ## Bangkit Capstone Project 2023
 
@@ -32,8 +32,8 @@ Here is our repository for Bangkit 2023 Capstone project - Mobile Development.
 - CircleImageView
 
 ## Link Download Application
-Link Download APK Atomic Habit:<br>
-[soon](-)
+Link Download APK Atomic Habits:<br>
+[Release](https://github.com/CAPSTONE-CH2-PS008/Android-main/releases/tag/Full-Release)
 
 ## Installation
  * ### Prerequisites
