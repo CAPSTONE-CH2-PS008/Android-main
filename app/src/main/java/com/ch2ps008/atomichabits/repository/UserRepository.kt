@@ -128,7 +128,7 @@ class UserRepository private constructor(
     }
 
     fun getHabitId(): LiveData<List<Habit>> = habitDao.getHabit()
-    
+
     suspend fun insertHabit(
         activityName: String,
         bobot: Int,
