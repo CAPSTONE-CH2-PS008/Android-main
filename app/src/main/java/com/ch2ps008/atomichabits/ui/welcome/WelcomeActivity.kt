@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.ch2ps008.atomichabits.databinding.ActivityWelcomeBinding
 import com.ch2ps008.atomichabits.ui.login.LoginActivity
 import com.ch2ps008.atomichabits.ui.main.MainActivity

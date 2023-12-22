@@ -1,12 +1,10 @@
 package com.ch2ps008.atomichabits.ui.splashscreen
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.ch2ps008.atomichabits.R
-import com.ch2ps008.atomichabits.databinding.ActivityRegisterBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.ch2ps008.atomichabits.databinding.ActivitySplashScreenBinding
 import com.ch2ps008.atomichabits.ui.welcome.WelcomeActivity
 
