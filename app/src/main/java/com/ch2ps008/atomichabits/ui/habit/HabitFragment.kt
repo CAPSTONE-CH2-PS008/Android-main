@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.InvalidationTracker
 import com.ch2ps008.atomichabits.adapter.HabitAdapter
 import com.ch2ps008.atomichabits.databinding.FragmentHabitBinding
 import com.ch2ps008.atomichabits.db.Habit
@@ -37,14 +39,14 @@ class HabitFragment : Fragment() {
         binding.apply {
             when (position) {
                 1 -> {
-                    listViewModel.getHabit().observe(viewLifecycleOwner){
+                    listViewModel.getHabitSortTime().observe(viewLifecycleOwner, Observer {
                         setData(it)
-                    }
+                    })
                 }
                 2 -> {
-                    listViewModel.getPredict().observe(viewLifecycleOwner){
+                    listViewModel.getPredictSortTime().observe(viewLifecycleOwner, Observer {
                         setPredict(it)
-                    }
+                    })
                 }
             }
         }

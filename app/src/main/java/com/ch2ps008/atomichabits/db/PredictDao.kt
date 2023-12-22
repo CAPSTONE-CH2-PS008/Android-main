@@ -15,6 +15,9 @@ interface PredictDao {
     @Query("SELECT * FROM predict WHERE id = :id")
     suspend fun getPredictsById(id: Int): List<Predict>
 
+    @Query("SELECT * FROM predict ORDER BY startHour ASC, endHour ASC")
+    fun getPredictSortedByTime(): LiveData<List<Predict>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPredict(predict: Predict)
 

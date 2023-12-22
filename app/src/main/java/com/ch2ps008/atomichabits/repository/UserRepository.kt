@@ -183,6 +183,14 @@ class UserRepository private constructor(
         return predictDao
     }
 
+    fun getHabitsSortedByTime(): LiveData<List<Habit>> {
+        return habitDao.getHabitsSortedByTime()
+    }
+
+    fun getPredictSortedByTime(): LiveData<List<Predict>> {
+        return predictDao.getPredictSortedByTime()
+    }
+
     companion object {
         private const val TAG = "UserRepository"
 
