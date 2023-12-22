@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.InvalidationTracker
 import com.ch2ps008.atomichabits.adapter.HabitAdapter
 import com.ch2ps008.atomichabits.databinding.FragmentHabitBinding
 import com.ch2ps008.atomichabits.db.Habit
