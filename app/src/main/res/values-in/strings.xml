@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Atomic Habits</string>
+    <string name="title_notifications">Notifikasi</string>
+    <string name="wrong_email_format">Format Email Salah</string>
+    <string name="email_empty">Email Kosong</string>
+    <string name="enter_your_email_address">Masukkan alamat email anda</string>
+    <string name="login">Masuk</string>
+    <string name="password_empty">Password tidak boleh kosong</string>
+    <string name="password_less">Password kurang dari 6 karakter</string>
+    <string name="enter_your_password">Masukkan password anda</string>
+    <string name="akun_dengan_berhasil_dibuat_login_sekarang">Akun dengan %1$s berhasil dibuat. Masuk Sekarang.</string>
+    <string name="akun_dibuat">Akun Dibuat</string>
+    <string name="tab_text_1">Aktivitas Saya</string>
+    <string name="tab_text_2">Rekomendasi</string>
+    <string name="activity_category">Kategori Aktivitas</string>
+    <string name="nearest_activity">Aktivitas Terdekat</string>
+    <string name="hours">Jam</string>
+    <string name="action_sign_in">Masuk atau Daftar</string>
+    <string name="action_sign_in_short">Masuk</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="invalid_username">Username tidak valid</string>
+    <string name="invalid_password">Password harus >6 karakter</string>
+    <string name="login_failed">Login Gagal</string>
+    <string name="register">Daftar</string>
+    <string name="sign_in">Masuk</string>
+    <string name="already_have_an_account">Sudah Punya Akun?</string>
+    <string name="dont_have_account">Belum Punya Akun?</string>
+    <string name="logout">Keluar</string>
+    <string name="your_activity">Aktivitas Anda</string>
+    <string name="date">Tanggal</string>
+    <string name="time">Waktu</string>
+    <string name="profile">Profil</string>
+    <string name="enter_your_name">Masukkan Nama Anda</string>
+    <string name="sukses_login">Login Sukses</string>
+    <string name="login_berhasil">Login Sukses</string>
+    <string name="lanjut">Selanjutnya</string>
+    <string name="welcome_to_atomic_habits">Selamat Datang di Atomic Habits</string>
+    <string name="start_hour">Jam Mulai</string>
+    <string name="end_hour">Jam Akhir</string>
+    <string name="activity_name">Nama Aktivitas</string>
+    <string name="add_activity">Tambah Aktivitas</string>
+    <string name="input_your_activity">Masukkan Aktivitas Anda</string>
+    <string name="list_activity">Daftar Aktivitas</string>
+    <string name="tips_and_trick">Tips dan Trik</string>
+    <string name="your_nearest_activity">Aktivitas Terdekat Anda</string>
+    <string name="no_nearest_activity">Tidak Ada Aktivitas</string>
+    <string name="are_you_sure_want_to_logout">Apakah anda yakin mau keluar?</string>
+    <string name="confirmation">Konfirmasi</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <string name="tips_and_trick_image">Gambar TIps dan Trik</string>
+    <string name="source">Sumber: %1$s:</string>
+    <string name="delete_button">Tombol Hapus</string>
+    <string name="your_status">Status Anda</string>
+    <string name="profile_image">Gambar Profil</string>
+    <string name="tips_title">Judul Tips</string>
+    <string name="description">Deskripsi</string>
+    <string name="submit">Kirim</string>
+    <string name="add_validation">Data harus diisi</string>
+    <string name="failed_send_to_server">Gagal kirim ke server</string>
+    <string name="success">Sukses</string>
+    <string name="crsl2">Berdasarkan prinsip-prinsip Atomic Habits dari James Clears, aplikasi ini mendorong peningkatan yang berkelanjutan melalui perubahan kecil dan bertahap.</string>
+    <string name="crsl1">Selamat datang di aplikasi Atomic Habits, Realitas ada di tangan Anda</string>
+    <string name="crsl3">Rekomendasi kebiasaan yang dipersonalisasi: Pembelajaran mesin menyarankan kebiasaan yang dapat dicapai untuk tujuan individu, mengurangi kewalahan dan meningkatkan produktivitas.</string>
+    <string name="crsl4">Pelacakan Kemajuan: menyajikan data kemajuan pengguna dan mengingatkan pengguna untuk secara konsisten melakukan kebiasaan mereka.</string>
+    <string name="change_language">Ganti Bahasa</string>
+
+    <string-array name="activity_array">
+        <item>Prioritas Rendah</item>
+        <item>Prioritas Normal</item>
+        <item>Prioritas Tinggi</item>
+        <item>Workout</item>
+    </string-array>
+
+    <string-array name="interest_array">
+        <item>Tidak Tertarik</item>
+        <item>Malas</item>
+        <item>Biasa saja</item>
+        <item>Suka</item>
+        <item>Favorit</item>
+        <item>Semangat</item>
+    </string-array>
+
+    <string-array name="bobot_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+</resources>

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Atomic Habits</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_home" translatable="false">Home</string>
+    <string name="title_dashboard" translatable="false">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="wrong_email_format">Wrong Email Format</string>
     <string name="email_empty">Email is Empty</string>
@@ -14,21 +14,21 @@
     <string name="akun_dengan_berhasil_dibuat_login_sekarang">Account with %1$s successfully created. Login Now.</string>
     <string name="akun_dibuat">Account Created</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="tab_text_1">My Daily</string>
     <string name="tab_text_2">Recommendation</string>
     <string name="activity_category">Activity Category</string>
     <string name="nearest_activity">Nearest Activity</string>
-    <string name="tab_layout">Tab Layout</string>
+    <string name="tab_layout" translatable="false">Tab Layout</string>
     <string name="hours">Hours</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
+    <string name="title_activity_login" translatable="false">LoginActivity</string>
+    <string name="prompt_email" translatable="false">Email</string>
+    <string name="prompt_password" translatable="false">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_password">Password must be >6 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="register">Register</string>
     <string name="sign_in">Sign In</string>
@@ -43,8 +43,8 @@
     <string name="sukses_login">Login Success</string>
     <string name="login_berhasil">Login Successful</string>
     <string name="lanjut">Next</string>
-    <string name="error">Error</string>
-    <string name="ok">OK</string>
+    <string name="error" translatable="false">Error</string>
+    <string name="ok" translatable="false">OK</string>
     <string name="welcome_to_atomic_habits">Welcome to Atomic Habits</string>
     <string name="start_hour">Start Hour</string>
     <string name="end_hour">End Hour</string>
@@ -54,7 +54,7 @@
     <string name="list_activity">List Activity</string>
     <string name="tips_and_trick">Tips and Trick</string>
     <string name="your_nearest_activity">Your Nearest Activity</string>
-    <string name="token_saved">uid saved</string>
+    <string name="token_saved" translatable="false">uid saved</string>
     <string name="no_nearest_activity">No Nearest Activity</string>
 
     <string name="are_you_sure_want_to_logout">Are you sure want to logout?</string>
@@ -63,41 +63,31 @@
     <string name="no">No</string>
     <string name="tips_and_trick_image">Tips And Trick Image</string>
     <string name="source">Source: %1$s:</string>
-    <string name="username">Username</string>
-    <string name="email">Email</string>
-    <string name="formathour">%1$s - %2$s</string>
+    <string name="username" translatable="false">Username</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="formathour" translatable="false">%1$s - %2$s</string>
     <string name="delete_button">Delete Button</string>
     <string name="your_status">Your Status</string>
-    <string name="home_cardview">Home Cardview</string>
-    <string name="carousel_image">Carousel Image</string>
+    <string name="home_cardview" translatable="false">Home Cardview</string>
+    <string name="carousel_image" translatable="false">Carousel Image</string>
     <string name="profile_image">Profile Image</string>
     <string name="tips_title">Tips Title</string>
     <string name="description">Description</string>
     <string name="submit">Submit</string>
-    <string name="interest">Interest</string>
-    <string name="weight">Weight</string>
+    <string name="interest" translatable="false">Interest</string>
+    <string name="weight" translatable="false">Weight</string>
     <string name="add_validation">Data must be filled in</string>
-    <string name="token_disimpan">Token disimpan</string>
+    <string name="token_disimpan" translatable="false">Token disimpan</string>
     <string name="failed_send_to_server">Failed send to server</string>
     <string name="success">Success</string>
-    <string name="bobot">bobot</string>
+    <string name="bobot" translatable="false">Weight</string>
     <string name="crsl2">Based on James Clears proven Atomic Habits principles, the app fosters sustainable improvement through small, incremental changes.</string>
-    <string name="crsl1">Welcome to the Atomic Habits app, your personal catalyst for transformative change.</string>
+    <string name="crsl1">Welcome to the Atomic Habits app, Reality is in your hands</string>
     <string name="crsl3">Personalized habit recommendations: Machine learning suggests achievable habits for individual goals, reducing overwhelm and increasing productivity.</string>
     <string name="crsl4">Progress Tracking: present user progress data and remind users to consistently perform their habits.</string>
-    <string name="atomic_habits">Atomic Habits</string>
-    <string name="reality_is_in_your_hands">"Reality is in your hands"</string>
-
-
-    <string-array name="days_array">
-        <item>Monday</item>
-        <item>Tuesday</item>
-        <item>Wednesday</item>
-        <item>Thursday</item>
-        <item>Friday</item>
-        <item>Saturday</item>
-        <item>Sunday</item>
-    </string-array>
+    <string name="atomic_habits" translatable="false">Atomic Habits</string>
+    <string name="reality_is_in_your_hands" translatable="false">"Reality is in your hands"</string>
+    <string name="change_language">Change Language</string>
 
     <string-array name="activity_array">
         <item>Low Priority</item>

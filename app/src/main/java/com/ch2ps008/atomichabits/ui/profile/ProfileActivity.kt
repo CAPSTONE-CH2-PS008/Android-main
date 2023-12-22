@@ -2,6 +2,7 @@ package com.ch2ps008.atomichabits.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
@@ -41,6 +42,9 @@ class ProfileActivity : AppCompatActivity() {
         binding.apply {
             btnLogout.setOnClickListener {
                 logoutConfirmation()
+            }
+            btnChangeLanguage.setOnClickListener {
+                startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
             }
         }
     }
