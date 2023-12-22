@@ -21,12 +21,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        val localPropertiesFile = rootProject.file("local.properties")
-        val localProperties = Properties()
-        localProperties.load(FileInputStream(localPropertiesFile))
-
-        buildConfigField("String", "BASE_URL", "\"${localProperties.getProperty("BASE_URL")}\"")
-        buildConfigField("String", "BASE_URL2", "\"${localProperties.getProperty("BASE_URL2")}\"")
+        buildConfigField("String", "BASE_URL", "\"https://ch2ps008-img-woqgwnsbfa-et.a.run.app/\"")
+        buildConfigField("String", "BASE_URL2", "\"https://ch2-ps008-flask.de.r.appspot.com/api/predict\"")
         signingConfig = signingConfigs.getByName("debug")
     }
 
