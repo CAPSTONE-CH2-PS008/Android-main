@@ -128,9 +128,7 @@ class UserRepository private constructor(
     }
 
     fun getHabitId(): LiveData<List<Habit>> = habitDao.getHabit()
-
-    fun getPredict(): LiveData<List<Predict>> = predictDao.getPredict()
-
+    
     suspend fun insertHabit(
         activityName: String,
         bobot: Int,
