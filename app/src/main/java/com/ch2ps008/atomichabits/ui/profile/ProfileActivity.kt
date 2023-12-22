@@ -55,5 +55,4 @@ class ProfileActivity : AppCompatActivity() {
         val titleTextView = customActionBarView?.findViewById<TextView>(R.id.tvTitle)
         titleTextView?.text = title
     }
-
 }

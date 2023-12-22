@@ -55,11 +55,17 @@ class HomeAdapter :
             binding.apply {
                 tvActivity.text = habit.activityName
 
-                val duration = abs(habit.endHour - habit.startHour)
+                // Ensure that end time is greater than start time
+                val actualEndHour = if (habit.endHour < habit.startHour) {
+                    habit.endHour + 24
+                } else {
+                    habit.endHour
+                }
+
+                val duration = actualEndHour - habit.startHour
 
                 val formattedDuration = "$duration"
                 tvHour.text = formattedDuration
-
             }
         }
     }

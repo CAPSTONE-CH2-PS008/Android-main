@@ -76,8 +76,8 @@ class PredictAdapter (private val habitDao: HabitDao, private val predictDao: Pr
 
             builder.setPositiveButton("Yes") { _, _ ->
                 CoroutineScope(Dispatchers.Main).launch {
-                    val predictActivityName = getPredict.activityName
-                    val habit = habitDao.getHabitsByActivityName(predictActivityName)
+                    val predictActivityName = getPredict.id
+                    val habit = habitDao.getHabitsById(predictActivityName)
                     habit.forEach { habit ->
                         habitDao.deleteHabit(habit)
                     }

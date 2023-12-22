@@ -12,8 +12,8 @@ interface PredictDao {
     @Query("SELECT * FROM predict")
     fun getPredict(): LiveData<List<Predict>>
 
-    @Query("SELECT * FROM predict WHERE activityName = :activityName")
-    suspend fun getPredictsByActivityName(activityName: String): List<Predict>
+    @Query("SELECT * FROM predict WHERE id = :id")
+    suspend fun getPredictsById(id: Int): List<Predict>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPredict(predict: Predict)

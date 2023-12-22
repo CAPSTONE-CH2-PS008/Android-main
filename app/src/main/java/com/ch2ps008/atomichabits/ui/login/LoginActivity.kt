@@ -35,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
             tvRegister.setOnClickListener {
                 val registerIntent = Intent(this@LoginActivity, RegisterActivity::class.java)
                 startActivity(registerIntent)
+                finish()
             }
             btnLogin.setOnClickListener {
                 val email = binding.edEmail.text.toString()
