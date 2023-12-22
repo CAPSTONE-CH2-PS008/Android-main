@@ -25,8 +25,6 @@ class WelcomeActivity : AppCompatActivity() {
         _binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        installSplashScreen()
-
         supportActionBar?.hide()
 
         binding.apply {

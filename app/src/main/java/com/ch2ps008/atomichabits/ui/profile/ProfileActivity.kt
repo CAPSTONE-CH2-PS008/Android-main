@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.ch2ps008.atomichabits.R
 import com.ch2ps008.atomichabits.databinding.ActivityProfileBinding
@@ -39,11 +40,22 @@ class ProfileActivity : AppCompatActivity() {
 
         binding.apply {
             btnLogout.setOnClickListener {
-                    profileViewModel.logout()
-                    profileViewModel.deleteDB()
-                    finish()
+                logoutConfirmation()
             }
         }
+    }
+
+    private fun logoutConfirmation() {
+        AlertDialog.Builder(this).apply {
+            setTitle(getString(R.string.confirmation))
+            setMessage(getString(R.string.are_you_sure_want_to_logout))
+            setPositiveButton(context.getString(R.string.yes)) { _, _ ->
+                profileViewModel.logout()
+                profileViewModel.deleteDB()
+                finish()
+            }
+            setNegativeButton(getString(R.string.no), null)
+        }.create().show()
     }
 
     private fun updateCustomActionBarTitle(title: String) {
