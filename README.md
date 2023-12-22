@@ -9,7 +9,7 @@ Here is our repository for Bangkit 2023 Capstone project - Mobile Development.
 ## Android Development Schedule
 |  Task  |     Week 1     |       Week 2        |            Week 3          |            Week 4          |
 | :----: | :------------: | :-----------------: | :------------------------: | :------------------------: |
-| Task 1 | UI/UX Design   | Create Main UI      | -                          | -                          |  
+| Task 1 | UI/UX Design   | Create Main UI      | -                          | Create Documentation       |  
 | Task 2 | Create Concept | Authentication Page | -                          | User Testing               | 
 | Task 3 |                | Integrate with API  | Add Some Features          | Fix Bugs                   |
 
@@ -33,7 +33,7 @@ Here is our repository for Bangkit 2023 Capstone project - Mobile Development.
 
 ## Link Download Application
 Link Download APK Atomic Habits:<br>
-[Release](https://github.com/CAPSTONE-CH2-PS008/Android-main/releases/tag/Full-Release)
+[Release](https://github.com/CAPSTONE-CH2-PS008/Android-main/releases/)
 
 ## Installation
  * ### Prerequisites
